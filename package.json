@@ -1,0 +1,24 @@
+{
+  "name": "food-fight",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "dev": "nodemon ./bin/www",
+    "postinstall": "cd client && npm install && npm run build",
+    "db:reset": "sequelize-cli db:drop; sequelize db:create && sequelize db:migrate && sequelize db:seed:all"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "connect-session-sequelize": "^7.1.1",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "express-session": "^1.17.1",
+    "morgan": "~1.9.1",
+    "nodemon": "^2.0.7",
+    "pg": "^8.6.0",
+    "sequelize": "^6.6.2",
+    "sequelize-cli": "^6.2.0"
+  }
+}
