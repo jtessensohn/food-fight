@@ -5,6 +5,9 @@
     give them the option of creating one.  We could
     also create a search bar for the user to search
     for team.
+
+    Also should we create /api/v1/users in our app.use
+    in app.js for version 1 and api.
 */
 
 var express = require('express');
@@ -19,7 +22,7 @@ router.get('/', function(req, res, next) {
 
 // =================Register Route===================
 
-// Check for username and password on register route.
+// Check for username and password on register post route.
 router.post('/register', async (req, res) => {
   if (!req.body.username || !req.body.password) {
     return res.status(400).json({
@@ -56,6 +59,61 @@ router.post('/register', async (req, res) => {
   })
 })
 
+//=================Login Route=====================
 
+// Check for username and password on login post route.
+router.post('/login', async (req, res) => {
+  if (!req.body.username || !req.body.password) {
+    return res.status(400).json({
+      error: "Please include username and password."
+    })
+  }
+
+  // Find username in db.
+  const user = await db.User.findOne({
+    where: {
+      username: req.body.username
+    }
+  })
+
+  // If there is no user send error.
+  if (!user) {
+    return res.status(404).json({
+      error: "No user with that username found, please try again."
+    })
+  }
+
+  // Compare entered password to db password
+  const match = await bcrypt.compare(req.body.password, user.password)
+
+  // If there is no match send error.
+  if (!match) {
+    return res.status(401).json({
+      error: "Password is incorrect, try again please."
+    })
+  }
+
+  // Create session for user.
+  // req.session.user = user
+
+  // Login user with id, username, and time.
+  res.json({
+    id: user.id,
+    username: user.username,
+    updatedAt: user.updatedAt
+  })
+})
+
+//===============Logout Route===================
+
+// Create a get that turns session to null.
+router.get('/logout', (req, res) => {
+  // req.session.user = null
+
+  // Let user know they have logged out.
+  res.json({
+    success: "Logged out successfully, the Food Fight rages on!"
+  })
+})
 
 module.exports = router;
