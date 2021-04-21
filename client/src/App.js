@@ -3,6 +3,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router,  Route, Switch} from 'react-router-dom';
 import {  Nav, Navbar,Form, FormControl,Button } from 'react-bootstrap';
 import Home from './pages/Home';
+import Register from './pages/Register';
+import SignIn from './pages/SignIn'
 
 
 function App() {
@@ -26,7 +28,10 @@ function App() {
             <Home />
           </Route>
           <Route path="/register">
-          {/* <Register /> */}
+            <Register />
+          </Route>
+          <Route path="/signIn">
+            <SignIn />
           </Route>
         </Switch>
       </Router>
