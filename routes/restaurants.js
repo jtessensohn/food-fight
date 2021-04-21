@@ -11,7 +11,7 @@ router.get('/', async (req, res) => {
 })
 
 // Create restaurant
-router.post('/', checkAuth, async (req, res) => {
+router.post('/', async (req, res) => {
   // check fields
   if (!req.body.category || !req.body.name || !req.body.address) {
     // if fields missing send 400
