@@ -94,7 +94,7 @@ router.post('/login', async (req, res) => {
   }
 
   // Create session for user.
-  // req.session.user = user
+  req.session.user = user
 
   // Login user with id, username, and time.
   res.json({
@@ -108,7 +108,7 @@ router.post('/login', async (req, res) => {
 
 // Create a get that turns session to null.
 router.get('/logout', (req, res) => {
-  // req.session.user = null
+  req.session.user = null
 
   // Let user know they have logged out.
   res.json({
