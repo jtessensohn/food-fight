@@ -9,6 +9,7 @@ const db = require('./models')
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const teamsRouter = require('./routes/teams');
+const fightsRouter = require('./routes/fights');
 
 var app = express();
 
@@ -32,6 +33,7 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 app.use('/', indexRouter);
 app.use('/api/v1/users', usersRouter);
 app.use('/api/v1/teams', teamsRouter);
+app.use('/api/v1/fights', fightsRouter);
 
 // send all other requests to react index.html
 app.get('*', (req, res) => {
