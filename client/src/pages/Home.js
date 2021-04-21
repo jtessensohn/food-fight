@@ -2,6 +2,7 @@ import React from 'react'
 import Logo from '../images/Logo.png'
 import '../css/Homepage.css'
 import { Nav, Navbar, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom'
 
 export default function Home() {
     return (
@@ -15,9 +16,12 @@ export default function Home() {
             </Navbar>
             <img className="logo" src={Logo} alt='Food-fight-logo.png'></img>
             <h2>Welcome to Food Fight!</h2>
-            <p>oh boy im about to crumb</p>
-            <Button className="registerloginButton" >Register</Button>
-            <Button className="registerloginButton">Login</Button>
+            <p>Tired of Jim always choosing lunch?  <br/>Does Sally always know the best foods…but not really?<br/>
+                  Let’s fight about it!  Who ever said fights have to be bad? <br/> Here on Food Fight,You now have just as much say in as Jim or sally on what you get to eat for lunch<br/>
+                we make it fun to go into battle for YOUR choice in restaurants. <br/> You now have just as much say in as Jim or sally on what you get to eat for lunch</p>
+
+            <Button className="registerloginButton" as={Link} to="/register" >Register</Button>
+            <Button  as={Link} to="/login" className="registerloginButton">Login</Button>
         </div>
     )
 }
