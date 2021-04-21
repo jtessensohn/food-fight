@@ -9,6 +9,7 @@ const db = require('./models')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+const restaurantsRouter = require('./routes/restaurants')
 
 var app = express();
 
@@ -27,10 +28,11 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'client/build')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/api/v1/users', usersRouter);
+app.use('/api/v1/restaurants', restaurantsRouter);
 
 // send all other requests to react index.html
 app.get('*', (req, res) => {
