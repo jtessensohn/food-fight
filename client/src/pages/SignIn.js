@@ -19,8 +19,8 @@ export default function SignIn() {
 
                                 <form className="form-signin">
                                     <div className="form-label-group">
-                                        <input type="text" id="inputUserame" className="form-control" placeholder="Username" required autoFocus />
-                                        <label htmlFor="inputUserame">Username</label>
+                                        <input type="text" id="inputUsername" className="form-control" placeholder="Username" required autoFocus />
+                                        <label htmlFor="inputUsername">Username</label>
                                     </div>
 
                                     <hr></hr>

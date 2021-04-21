@@ -4,6 +4,7 @@ import { BrowserRouter as Router,  Route, Switch} from 'react-router-dom';
 import Home from './pages/Home';
 import Register from './pages/Register';
 import SignIn from './pages/SignIn'
+import Myteam from './pages/Myteam';
 
 
 function App() {
@@ -19,6 +20,9 @@ function App() {
           </Route>
           <Route path="/signIn">
             <SignIn />
+          </Route>
+          <Route>
+            <Myteam />
           </Route>
         </Switch>
       </Router>
