@@ -2,8 +2,8 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-const SequelizeStore = require('connect-session-sequelize')(session.Store)
 const session = require('express-session')
+const SequelizeStore = require('connect-session-sequelize')(session.Store)
 const db = require('./models')
 
 
@@ -12,7 +12,7 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
-const store = new SequelizeStore({ db: models.sequelize })
+const store = new SequelizeStore({ db: db.sequelize })
 app.use(
   session({
     secret: 'pancakes',
