@@ -9,7 +9,7 @@ const db = require('./models')
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const restaurantsRouter = require('./routes/restaurants')
-const competitorsRouter = require('./routes/competitors'
+const competitorsRouter = require('./routes/competitors')
 const teamsRouter = require('./routes/teams');
 const fightsRouter = require('./routes/fights');
 

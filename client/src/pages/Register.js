@@ -1,53 +1,52 @@
 import React from 'react'
-// import { useState } from "react";
+import { useState } from "react";
 import '../css/register.css'
-import { Link } from 'react-router-dom'
-
-// const [ form, setForm ] = useState({
-//         username: '',
-//         password: ''
-//     })
-//     const history = useHistory()
-
-    const handleSubmit = (event) => {
-        event.preventDefault()
-        console.log("submitted")
-        fetch('api/v1/users/register', {
-            method: 'POST',
-            headers : {
-                'Content-Type' : 'application/json'
-            },
-            body: JSON.stringify({
-                // username: form.username,
-                // password: form.password
-            })
-        })
-            .then(res => res.json())
-            .then(data =>  {
-                if (data.error) {
-                    alert(data.error)
-                } else {
-                    alert('User Registered successfully')
-                    // history.push('/login')
-                }
-            })
-    }
-
-    const handleChange = (event) => {
-        // event.target.value
-        // setForm({
-        //     ...form,
-        //     [event.target.name] : event.target.value
-        // })
-    }
+import { Link, useHistory } from 'react-router-dom'
 
 export default function Register() {
+    const history = useHistory()
+    const [ form, setForm ] = useState({
+            username: '',
+            password: ''
+        })
+    
+        const handleSubmit = (event) => {
+            event.preventDefault()
+            // console.log("submitted")
+            fetch('api/v1/users/register', {
+                method: 'POST',
+                headers : {
+                    'Content-Type' : 'application/json'
+                },
+                body: JSON.stringify({
+                    username: form.username,
+                    password: form.password
+                })
+            })
+                .then(res => res.json())
+                .then(data =>  {
+                    if (data.error) {
+                        alert(data.error)
+                    } else {
+                        alert('User Registered successfully')
+                        history.push('/login')
+                    }
+                })
+        }
+    
+        const handleChange = (event) => {
+            setForm({
+                ...form,
+                [event.target.name] : event.target.value
+            })
+        }
+        
     return (
         <div>
             <div className="container">
                 <div className="row">
                     <div className="col-lg-10 col-xl-9 mx-auto">
-                        <div className="card card-signin flex-row my-5">
+                        <div className="card card-login flex-row my-5">
                             <div className="card-img-left d-none d-md-flex ">
                                 {/* background image set in css */}
                             </div>
@@ -55,16 +54,16 @@ export default function Register() {
                                 <h5 className="card-title text-center">Register</h5>
 
 
-                                <form className="form-signin">
+                                <form className="form-login" onSubmit={handleSubmit}>
                                     <div className="form-label-group">
-                                        <input type="text" id="inputUserame" className="form-control" placeholder="Username" required autoFocus />
-                                        <label htmlFor="inputUserame">Username</label>
+                                        <input onChange={handleChange} type="text" id="inputUsername" className="form-control" placeholder="Username" value={form.username} name="username" required autoFocus />
+                                        <label htmlFor="inputUsername">Username</label>
                                     </div>
 
                                     <hr></hr>
 
                                     <div className="form-label-group">
-                                        <input type="password" id="inputPassword" className="form-control" placeholder="Password" required />
+                                        <input onChange={handleChange} type="password" id="inputPassword" className="form-control" placeholder="Password" value={form.password} name="password" required />
                                         <label htmlFor="inputPassword">Password</label>
                                     </div>
 
