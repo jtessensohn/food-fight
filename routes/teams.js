@@ -43,7 +43,7 @@ router.post('/', checkAuth, async (req, res) => {
 
     // Create new team.
     const newTeam = await db.Team.create({
-        name: req.body.name
+        name: req.body.name,
     })
 
     res.status(201).json(newTeam)
