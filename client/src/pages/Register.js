@@ -75,7 +75,7 @@ export default function Register() {
                                     </div> */}
 
                                     <button className="btn btn-lg button btn-block text-uppercase" type="submit">Register</button>
-                                    <Link className="d-block text-center mt-2 small" to="/signIn">Sign In</Link>
+                                    <Link className="d-block text-center mt-2 small" to="/login">Sign In</Link>
                                 </form>
                                 <div class="card-footer ">
                                 Hurry! If you don't join your team, or who knows where you'll be eating.
