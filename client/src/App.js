@@ -4,9 +4,11 @@ import { BrowserRouter as Router,  Route, Switch} from 'react-router-dom';
 import Home from './pages/Home';
 import Register from './pages/Register';
 import Login from './pages/Login';
+import Myteam from './pages/Myteam';
 import { useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { setUser } from './redux/actions';
+
 
 
 function App() {
@@ -42,6 +44,9 @@ function App() {
           </Route>
           <Route path="/login">
             <Login />
+          </Route>
+          <Route>
+            <Myteam />
           </Route>
         </Switch>
         
