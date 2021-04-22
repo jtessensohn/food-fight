@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { Button, FormControl, InputGroup } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 export default function SearchBar() {
   const [text, setText] = useState('')
@@ -15,17 +16,27 @@ export default function SearchBar() {
       })
   }
 
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    filterTeams()
+  }
+
+  function filterTeams() {
+    console.log(teams)
+    setTeams(teams.filter(team => team.name === text))
+  }
+
   useEffect(() => {
     searchTeams()
   }, [setTeams])
 
   return (
     <div>
-      <form>
+      <form onSubmit={handleSubmit}>
         <InputGroup className="mb-3">
           <FormControl
-            placeholder="Search for a Team"
-            aria-label="Search for a Team"
+            placeholder="Search through Teams"
+            aria-label="Search through Teams"
             aria-describedby="basic-addon2"
             onChange={(e) => setText(e.target.value)}
             value={text}
@@ -37,9 +48,11 @@ export default function SearchBar() {
       </form>
       {!teams ? ('') : (
         teams.map(team => {
-          return(
+          return (
             <div key={team.id}>
-              <h2>{team.name}</h2>
+              <Link to={`/team/${team.id}`}>
+                <h2>{team.name}</h2>
+              </Link>
             </div>
           )
         })

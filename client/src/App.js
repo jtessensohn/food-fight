@@ -8,6 +8,7 @@ import Myteam from './pages/Myteam';
 import { useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { setUser } from './redux/actions';
+import Team from './pages/Team';
 
 
 
@@ -44,6 +45,9 @@ function App() {
           </Route>
           <Route path="/login">
             <Login />
+          </Route>
+          <Route path="/team/:id">
+            <Team />
           </Route>
           <Route path="/myteam">
             <Myteam />
