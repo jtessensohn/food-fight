@@ -1,10 +1,13 @@
 import React, { useState } from 'react'
 import '../css/login.css'
 import { Link, useHistory } from 'react-router-dom'
+import { useDispatch } from 'react-redux';
+import { setUser } from '../redux/actions';
 
 
 export default function Login() {
     const history = useHistory();
+    const dispatch = useDispatch();
     const [ form, setForm ] = useState({
         username: '',
         password: ''
@@ -28,6 +31,7 @@ export default function Login() {
                     alert(data.error)
                 } else {
                     alert('User Logged In Successfully')
+                    dispatch(setUser(data))
                     history.push('/');
                 }
             })
