@@ -116,4 +116,20 @@ router.get('/logout', (req, res) => {
   })
 })
 
+//===============Current User===================
+router.get('/current', (req, res) => {
+  const { user } = req.session;
+  if (user) {
+    res.json({
+      id: user.id,
+      username: user.username,
+      updatedAt: user.updatedAt
+    });
+  } else {
+    res.status(401).json({
+      error: 'Not logged in'
+    })
+  }
+})
+
 module.exports = router;
