@@ -1,15 +1,3 @@
-
-/* 
-    I was thinking of having a list of TeamId's that 
-    the user could choose from after logging in.  Or 
-    give them the option of creating one.  We could
-    also create a search bar for the user to search
-    for team.
-
-    Also should we create /api/v1/users in our app.use
-    in app.js for version 1 and api.
-*/
-
 var express = require('express');
 var router = express.Router();
 const db = require('../models');
@@ -21,7 +9,6 @@ router.get('/', function(req, res, next) {
 });
 
 // =================Register Route===================
-
 // Check for username and password on register post route.
 router.post('/register', async (req, res) => {
   if (!req.body.username || !req.body.password) {
@@ -60,7 +47,6 @@ router.post('/register', async (req, res) => {
 })
 
 //=================Login Route=====================
-
 // Check for username and password on login post route.
 router.post('/login', async (req, res) => {
   if (!req.body.username || !req.body.password) {
@@ -105,7 +91,6 @@ router.post('/login', async (req, res) => {
 })
 
 //===============Logout Route===================
-
 // Create a get that turns session to null.
 router.get('/logout', (req, res) => {
   req.session.user = null
@@ -132,6 +117,7 @@ router.get('/current', (req, res) => {
   }
 })
 
+//=================AddTeamId==================
 router.post('/team', async (req, res) => {
   if (!req.body.id) {
     return res.status(400).json({
