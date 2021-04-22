@@ -12,8 +12,8 @@ router.get('/', async function(req, res) {
             attributes: ['username', 'id']
         },
         {
-           model: db.Fight,
-           attributes: ['name', 'id']
+            model: db.Fight,
+            attributes: ['name', 'id']
         }]
     })
     res.json(teams);
