@@ -18,6 +18,8 @@
     "morgan": "~1.9.1",
     "nodemon": "^2.0.7",
     "pg": "^8.6.0",
+    "react-redux": "^7.2.3",
+    "redux": "^4.0.5",
     "sequelize": "^6.6.2",
     "sequelize-cli": "^6.2.0"
   }
