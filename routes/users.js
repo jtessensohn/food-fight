@@ -132,6 +132,7 @@ router.get('/current', (req, res) => {
   }
 })
 
+// join team route
 router.post('/team', async (req, res) => {
   if (!req.body.id) {
     return res.status(400).json({
@@ -139,10 +140,13 @@ router.post('/team', async (req, res) => {
     })
   }
 
+  // get userId from session
   const user = await db.User.findByPk(req.session.user.id)
 
+  // get teamId from req check /src/pages/Team.js
   const team = await db.Team.findByPk(req.body.id)
 
+  // this shouldn't happen
   if (!team) {
     return res.status(404).json({
       error: "Team does not exists"

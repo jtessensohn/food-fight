@@ -19,6 +19,17 @@ router.get('/', async function(req, res) {
     res.json(teams);
 })
 
+router.get('/:id', async function(req, res) {
+    const team = await db.Team.findByPk(req.params.id)
+    if (!team) {
+        res.status(404).json({
+            error: "Team not found"
+        })
+    }
+
+    res.json(team)
+})
+
 // Look for team name, if none error.  Create team.
 router.post('/', checkAuth, async (req, res) => {
     if (!req.body.name) {
