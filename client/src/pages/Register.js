@@ -78,7 +78,7 @@ export default function Register() {
                                     <Link className="d-block text-center mt-2 small" to="/login">Sign In</Link>
                                 </form>
                                 <div class="card-footer ">
-                                Hurry! If you don't join your team, or who knows where you'll be eating.
+                                Hurry! If you don't join your team, who knows where you'll be eating.
                                 </div>
                             </div>
                         </div>
