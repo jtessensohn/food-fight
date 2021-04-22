@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import { setUser } from '../redux/actions';
-import '../css/Homepage.css'
+import '../css/navigation.css'
 
 export default function Navigation() {
     const dispatch = useDispatch();
@@ -30,7 +30,7 @@ export default function Navigation() {
                 <Navbar.Brand as={Link} to="/">Food Fight</Navbar.Brand>
                 <Nav>
                 <Form inline>
-                    <Button className="registerloginButton" onClick={logout} disabled={buttonDisabled}>Logout</Button>
+                    <Button className="logoutButton" onClick={logout} disabled={buttonDisabled}>Logout</Button>
                 </Form>
                 </Nav>
             </Navbar>
