@@ -132,4 +132,28 @@ router.get('/current', (req, res) => {
   }
 })
 
+router.post('/team', async (req, res) => {
+  if (!req.body.id) {
+    return res.status(400).json({
+      error: "Please include id"
+    })
+  }
+
+  const user = await db.User.findByPk(req.session.user.id)
+
+  const team = await db.Team.findByPk(req.body.id)
+
+  if (!team) {
+    return res.status(404).json({
+      error: "Team does not exists"
+    })
+  }
+
+  user.setTeam(team)
+
+  res.json({
+    success: "Successfully added user to team"
+  })
+})
+
 module.exports = router;
