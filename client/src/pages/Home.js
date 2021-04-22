@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import logov2 from '../images/logov2.png'
 import '../css/Homepage.css'
 import { Button } from 'react-bootstrap';
@@ -8,6 +8,10 @@ import Navigation from '../components/Navigation';
 
 export default function Home() {
     const user = useSelector((state) => state.user);
+
+    useEffect(() => {
+        console.log(user)
+    }, [])
 
     return (
         <div>
