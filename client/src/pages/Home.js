@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux';
 import SearchBar from '../components/SearchBar';
 import Navigation from '../components/Navigation';
-import carousel1 from '../images/carousel.png'
+import carousel1 from '../images/carousel1.png'
 import carousel2 from '../images/carousel2.png'
 import carousel3 from '../images/carousel3.png'
 
@@ -19,19 +19,19 @@ export default function Home() {
         <div>
             <Navigation />
             <img className="logo" src={logov2} alt='Food-fight-logo.png'></img>
-            <Carousel>
-                <Carousel.Item>
+            <Carousel className="carouselContainer">
+                <Carousel.Item >
                     <img
-                        className="d-block w-100"
+                        className="d-block w-90 mx-auto carouselImg"
                         src={carousel1}
                         alt="First slide"
                     />
                     <Carousel.Caption>
                     </Carousel.Caption>
                 </Carousel.Item>
-                <Carousel.Item>
+                <Carousel.Item >
                     <img
-                        className="d-block w-100"
+                        className="d-block w-90 mx-auto carouselImg"
                         src={carousel2}
                         alt="Second slide"
                     />
@@ -39,9 +39,9 @@ export default function Home() {
                     <Carousel.Caption>
                     </Carousel.Caption>
                 </Carousel.Item>
-                <Carousel.Item>
+                <Carousel.Item >
                     <img
-                        className="d-block w-100"
+                        className="d-block w-90 mx-auto carouselImg"
                         src={carousel3}
                         alt="Third slide"
                     />
