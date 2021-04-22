@@ -1,0 +1,16 @@
+.logoutButton {
+    background-color: red;
+    border: 0;
+}
+
+.logoutButton:hover {
+    background-color: red;
+}
+
+.logoutButton:active {
+    background-color: red;
+}
+
+.logoutButton:visited {
+    background-color: red;
+}
