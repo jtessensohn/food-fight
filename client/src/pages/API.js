@@ -3,7 +3,7 @@ import React from 'react'
 
 
 export default function API() {
-    const API_KEY = 'AIzaSyDYLXboALeQ2FniasTJingElKA0cTVvGMQ'
+    // const API_KEY = {process.env.API_KEY}
     
     const getRestInfo = (event) => {
         event.preventDefault()
