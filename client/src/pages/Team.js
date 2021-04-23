@@ -4,7 +4,7 @@ import { useParams } from "react-router"
 import { useSelector, useStore } from "react-redux";
 
 export default function Team() {
-  const user = useSelector((state) => state.user);
+  // const user = useSelector((state) => state.user);
   const [team, setTeam] = useState([])
   const [teamUsers, setTeamUsers] = useState ([])
   const { id } = useParams()
