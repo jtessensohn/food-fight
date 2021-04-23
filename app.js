@@ -5,6 +5,7 @@ const logger = require('morgan');
 const session = require('express-session')
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const db = require('./models');
+require('dotenv').config()
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
