@@ -9,6 +9,7 @@ import { useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { setUser } from './redux/actions';
 import Team from './pages/Team';
+import Restaurants from './pages/Restaurants';
 
 
 
@@ -51,6 +52,9 @@ function App() {
           </Route>
           <Route path="/myteam">
             <Myteam />
+          </Route>
+          <Route path='/restaurants'>
+            <Restaurants />
           </Route>
         </Switch>
         

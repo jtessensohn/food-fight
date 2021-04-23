@@ -1,0 +1,3 @@
+{users.map(user =>{
+    where: user.id == team.id
+})}

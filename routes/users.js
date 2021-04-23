@@ -4,8 +4,9 @@ const db = require('../models');
 const bcrypt = require('bcrypt');
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+router.get('/', async function(req, res, next) {
+  const user = await db.User.findAll()
+  res.send(user);
 });
 
 // =================Register Route===================
