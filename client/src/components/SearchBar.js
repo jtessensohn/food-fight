@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import { Button, FormControl, InputGroup } from 'react-bootstrap'
+import { Button, Card, FormControl, InputGroup, Row } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import "../css/searchbar.css"
 
 export default function SearchBar() {
   const [text, setText] = useState('')
@@ -31,7 +32,7 @@ export default function SearchBar() {
   }, [setTeams])
 
   return (
-    <div>
+    <div className="mx-5">
       <form onSubmit={handleSubmit}>
         <InputGroup className="mb-3">
           <FormControl
@@ -46,17 +47,22 @@ export default function SearchBar() {
           </InputGroup.Append>
         </InputGroup>
       </form>
+      <Row>
+
       {!teams ? ('') : (
         teams.map(team => {
           return (
-            <div key={team.id}>
-              <Link to={`/team/${team.id}`}>
-                <h2>{team.name}</h2>
-              </Link>
-            </div>
+            <Card className="col-3 mx-auto mb-2 teamCard" key={team.id}>
+              <Card.Body className="p-2">
+                <Link className="teamLink" to={`/team/${team.id}`}>
+                  <h3 className="teamName">{team.name}</h3>
+                </Link>
+              </Card.Body>
+            </Card>
           )
         })
-      )}
+        )}
+      </Row>
     </div>
   )
 }
