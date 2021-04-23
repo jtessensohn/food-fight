@@ -1,0 +1,24 @@
+.teamLink {
+    color: rgb(33, 36, 41);
+}
+
+.teamLink:link {
+
+}
+
+.teamLink:visited {
+
+}
+
+.teamLink:hover {
+    text-decoration: none;
+    color: rgb(230, 220, 36);
+}
+
+.teamLink:active {
+    color: rgb(230, 220, 36);
+}
+
+.teamCard:hover {
+    background-color: rgb(230, 22, 36);
+}

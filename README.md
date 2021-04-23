@@ -90,6 +90,14 @@ Of course, this solution will not solve all of your interpersonal problems, but 
 ### Built With
 
 This section will list the major frameworks that we used to build our project.
+
+* [Bootstrap](https://getbootstrap.com)
+* [Bootstrap-React](https://react-bootstrap.github.io/)
+* [JQuery](https://jquery.com)
+* [ReactJS](https://reactjs.org/)
+
+
+
 <br>
 <img alt='React' src='https://camo.githubusercontent.com/4e4a3b5c3e9c00501ec866e2f2466c5a6032f838aca5f2cf3b14450e39e8a2f0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f72656163742532302d2532333230323332612e7376673f267374796c653d666f722d7468652d6261646765266c6f676f3d7265616374266c6f676f436f6c6f723d253233363144414642'>
 <br>
@@ -104,34 +112,6 @@ This section will list the major frameworks that we used to build our project.
 <img alt='JAVASCRIPT' src='https://camo.githubusercontent.com/62d37abe760867620e0baea1066303719d630a82936837ba7bff6b0c754e3c9f/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6a6176617363726970742532302d2532333332333333302e7376673f267374796c653d666f722d7468652d6261646765266c6f676f3d6a617661736372697074266c6f676f436f6c6f723d253233463744463145'>
 <br>
 <img alt='EXPRESS' src='https://camo.githubusercontent.com/87d8d88ac087f77c5b56509373a2dd49e5439722d7ad59c3f39a577907053152/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f657870726573732e6a732532302d2532333430346435392e7376673f267374796c653d666f722d7468652d6261646765'>
-
-
-
-<!-- GETTING STARTED
-## Getting Started
-
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
-
-### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
-
-### Installation
-
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/your_username_/Project-Name.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
 
 
 <!-- USAGE EXAMPLES -->
