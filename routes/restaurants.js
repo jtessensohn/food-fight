@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
 // Create restaurant
 router.post('/', async (req, res) => {
   // check fields
-  if (!req.body.category || !req.body.name || !req.body.address) {
+  if (!req.body.category || !req.body.name) {
     // if fields missing send 400
     return res.status(400).json({
       error: 'Please include all fields'
@@ -24,7 +24,6 @@ router.post('/', async (req, res) => {
   const restaurant = await models.Restaurant.create({
     category: req.body.category,
     name: req.body.name,
-    address: req.body.address
   })
 
   //send back new restaurant
