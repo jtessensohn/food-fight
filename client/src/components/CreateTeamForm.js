@@ -22,8 +22,16 @@ export default function CreateTeamForm() {
         if (data.error) {
           alert(data.error)
         } else {
-          console.log(data)
-          history.push(`/team/${data.id}`)
+          fetch(`/api/v1/users/team`, {
+            method: "POST",
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              id: data.id
+            })
+          })
+          .then(history.push(`/team/${data.id}`))
         }
       })
   }
