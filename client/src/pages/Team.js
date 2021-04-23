@@ -1,6 +1,10 @@
-import { Button, Card } from "react-bootstrap"
+import { Button, Card, Row } from "react-bootstrap"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router"
+import { useSelector, useStore } from "react-redux";
+import Navigation from "../components/Navigation";
+import Footer from "../components/Footer";
+import "../css/team.css"
 
 export default function Team() {
   const [team, setTeam] = useState([])
@@ -50,17 +54,29 @@ export default function Team() {
 
   return (
     <div>
-      <h1>Team: {team.name}</h1>
-      {teamUsers.map(user => {
-        return (<div>
-          <Card>
-            {user.username}
-          </Card>
-        </div>
-        )
-      })}
-      <br />
-      <Button variant="dark" onClick={handleClick}>Join Team</Button>
+      <Navigation />
+      <Row className="mt-3">
+        <Row className="col-6">
+          <h1 className="col-12 teamName">{team.name}</h1>
+          <Button className="col-3 mx-auto joinButton" variant="dark" onClick={handleClick}>Join Team</Button>
+        </Row>
+
+        <Card className="col-6 teamMemberCard">
+          <Card.Title className="teamMemberCardTitle pb-0">Team Members</Card.Title>
+          <Card.Body>
+            <div className="memberList">
+              {teamUsers.map(user => {
+                return (<div className="memberListItem p-3">
+                    {user.username}
+                </div>
+                )
+              })}
+            </div>
+          </Card.Body>
+        </Card>
+
+      </Row>
+      <Footer />
     </div>
   )
 }
