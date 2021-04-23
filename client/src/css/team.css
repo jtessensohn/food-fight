@@ -1,0 +1,25 @@
+.teamMemberCardTitle {
+    text-transform: uppercase !important;
+    font-size: 2.5rem;
+    border-bottom: 3px solid black;
+}
+
+.teamName {
+    text-transform: uppercase;
+    font-size: 2.5rem;
+}
+
+.memberList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.memberListItem {
+    display: flex;
+    font-size: 1.5rem;
+}
+
+.joinButton {
+    height: 50px;
+}
