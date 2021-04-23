@@ -1,10 +1,10 @@
 import { Button } from "react-bootstrap"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router"
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 
 export default function Team() {
-  const user = useSelector((state) => state.user);
+  // const user = useSelector((state) => state.user);
   const [team, setTeam] = useState([])
   const { id } = useParams()
 
