@@ -11,6 +11,7 @@ import carousel2 from '../images/carousel2.png'
 import carousel3 from '../images/carousel3.png'
 import '../css/carousel.css'
 import CreateTeamForm from '../components/CreateTeamForm';
+import Footer from '../components/Footer';
 
 
 
@@ -20,8 +21,9 @@ export default function Home() {
     return (
         <div>
             <Navigation />
-            <img className="logo" src={logov2} alt='Food-fight-logo.png'></img>
-            <Carousel className="carouselContainer mx-auto">
+            <img className="logo py-0" src={logov2} alt='Food-fight-logo.png'></img>
+            <Carousel className="carouselContainer">
+
                 <Carousel.Item >
                     <img
                         className="d-block mx-auto carouselImg"
@@ -68,6 +70,8 @@ export default function Home() {
                     <Button as={Link} to="/login" className="registerloginButton">Login</Button>
                 </>
             )}
+
+            <Footer />
         </div>
     )
 }

@@ -1,11 +1,12 @@
-import { Button } from "react-bootstrap"
+import { Button, Card } from "react-bootstrap"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router"
-// import { useSelector } from "react-redux";
+import { useSelector, useStore } from "react-redux";
 
 export default function Team() {
   // const user = useSelector((state) => state.user);
   const [team, setTeam] = useState([])
+  const [teamUsers, setTeamUsers] = useState ([])
   const { id } = useParams()
 
   const getTeamById = () => {
@@ -14,7 +15,6 @@ export default function Team() {
     })
       .then(res => res.json())
       .then(data => {
-        console.log(data)
         setTeam(data)
       })
   }
@@ -29,17 +29,38 @@ export default function Team() {
       body: JSON.stringify({
         id: id
       })
+    }).then(() => allUsers())
+    
+  }
+
+  const allUsers = () => {
+    console.log('all users are belong to us')
+    fetch('/api/v1/users')
+    .then(res => res.json())
+    .then(data => {
+      const userResults = data.filter(user => user.TeamId === parseInt(id))
+      setTeamUsers(userResults)
+      console.log(data)
     })
   }
 
 
   useEffect(() => {
     getTeamById()
-  }, [setTeam])
+    allUsers()
+  }, [setTeam, setTeamUsers])
 
   return (
     <div>
-      team time {team.name}
+      <h1>Team: {team.name}</h1>
+      {teamUsers.map(user => {
+       return (<div>
+         <Card>
+           {user.username}
+         </Card>
+       </div>
+       )
+      })}
       <br />
       <Button variant="dark" onClick={handleClick}>Join Team</Button>
     </div>
