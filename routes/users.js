@@ -109,7 +109,8 @@ router.get('/current', (req, res) => {
     res.json({
       id: user.id,
       username: user.username,
-      updatedAt: user.updatedAt
+      updatedAt: user.updatedAt,
+      TeamId: user.TeamId
     });
   } else {
     res.status(401).json({
@@ -140,7 +141,8 @@ router.post('/team', async (req, res) => {
     })
   }
 
-  user.setTeam(team)
+  await user.setTeam(team)
+  req.session.user = user
 
   res.json({
     success: "Successfully added user to team"
