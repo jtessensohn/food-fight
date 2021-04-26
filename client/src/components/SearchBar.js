@@ -48,7 +48,7 @@ export default function SearchBar() {
           </InputGroup.Append>
         </InputGroup>
       </form>
-      <Row>
+      <Row className="mx-1">
 
       {!teams ? ('') : (
         teams.map(team => {

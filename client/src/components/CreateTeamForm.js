@@ -43,7 +43,7 @@ export default function CreateTeamForm() {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form className="mx-5" onSubmit={handleSubmit}>
         <InputGroup className="mb-3">
           <FormControl
             placeholder="Create a Team"
@@ -53,7 +53,7 @@ export default function CreateTeamForm() {
             value={text}
           />
           <InputGroup.Append>
-            <Button variant="dark">Search</Button>
+            <Button variant="dark">Create</Button>
           </InputGroup.Append>
         </InputGroup>
       </form>
