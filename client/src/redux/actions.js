@@ -6,3 +6,13 @@ export function setUser(data) {
         data,
     }
 }
+
+export const SET_TEAM = 'SET_TEAM';
+
+export function setTeam(TeamId) {
+    return {
+        type: SET_TEAM,
+        TeamId,
+    }
+}
+

@@ -1,15 +1,17 @@
 import { Button, Card, Row } from "react-bootstrap"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router"
-import { useSelector, useStore } from "react-redux";
+import { useDispatch, useSelector, useStore } from "react-redux";
 import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
 import "../css/team.css"
+import { setTeam } from "../redux/actions";
 
 export default function Team() {
-  const [team, setTeam] = useState([])
+  const [teamData, setTeamData] = useState([])
   const [teamUsers, setTeamUsers] = useState([])
   const { id } = useParams()
+  const dispatch = useDispatch();
 
   const getTeamById = () => {
     fetch(`/api/v1/teams/${id}`, {
@@ -17,7 +19,7 @@ export default function Team() {
     })
       .then(res => res.json())
       .then(data => {
-        setTeam(data)
+        setTeamData(data)
       })
   }
 
@@ -31,7 +33,10 @@ export default function Team() {
       body: JSON.stringify({
         id: id
       })
-    }).then(() => allUsers())
+    }).then(() => {
+      dispatch(setTeam(+id))
+      allUsers()
+    })
 
   }
 
@@ -46,18 +51,17 @@ export default function Team() {
       })
   }
 
-
   useEffect(() => {
     getTeamById()
     allUsers()
-  }, [setTeam, setTeamUsers])
+  }, [setTeamData, setTeamUsers])
 
   return (
     <div>
       <Navigation />
       <Row className="mt-3">
         <Row className="col-6">
-          <h1 className="col-12 p-0 my-auto teamNameTeamPage">{team.name}</h1>
+          <h1 className="col-12 p-0 my-auto teamNameTeamPage">{teamData.name}</h1>
           <Button className="col-3 mx-auto my-auto joinButton" variant="dark" onClick={handleClick}>Join Team</Button>
         </Row>
 
@@ -66,7 +70,7 @@ export default function Team() {
           <Card.Body>
             <div className="memberList">
               {teamUsers.map(user => {
-                return (<div className="memberListItem p-3">
+                return (<div className="memberListItem p-3" key={user.id}>
                     {user.username}
                 </div>
                 )
