@@ -1,6 +1,7 @@
 import React from 'react'
 import { Form, Col, Button, Card } from 'react-bootstrap'
 import { useState } from 'react';
+import Navigation from '../components/Navigation';
 
 
 export default function Restaurants() {
@@ -34,7 +35,7 @@ export default function Restaurants() {
   }
   return (
     <div>
-      
+      <Navigation />
       {/* // attach handle submit to form */}
       <Form onSubmit={handleSubmit}>
         <Card className="col-6 m-5 p-5 shadow-lg p-3 mb-5 bg-dark rounded mx-auto">

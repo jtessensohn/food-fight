@@ -2,16 +2,19 @@ import { Button, Card, Row } from "react-bootstrap"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router"
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
+import { useDispatch } from "react-redux";
 import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
 import "../css/team.css"
+import { setTeam } from "../redux/actions";
 
 export default function Team() {
-  const [team, setTeam] = useState([])
+  const [teamData, setTeamData] = useState([])
   const [teamUsers, setTeamUsers] = useState([])
   const [teamRestaurants, setTeamRestaurants] = useState([])
   const [fightRestaurants, setFightRestaurants] = useState([])
   const { id } = useParams()
+  const dispatch = useDispatch();
 
   const getTeamById = () => {
     fetch(`/api/v1/teams/${id}`, {
@@ -19,7 +22,7 @@ export default function Team() {
     })
       .then(res => res.json())
       .then(data => {
-        setTeam(data)
+        setTeamData(data)
       })
   }
 
@@ -33,7 +36,10 @@ export default function Team() {
       body: JSON.stringify({
         id: id
       })
-    }).then(() => allUsers())
+    }).then(() => {
+      dispatch(setTeam(+id))
+      allUsers()
+    })
 
   }
 
@@ -86,16 +92,16 @@ const [reorderedItem] = state[source].splice(result.source.index, 1)
       <Navigation />
       <Row className="mt-3">
         <Row className="col-6">
-          <h1 className="col-12 teamName">{team.name}</h1>
-          <Button className="col-3 mx-auto joinButton" variant="dark" onClick={handleClick}>Join Team</Button>
+          <h1 className="col-12 p-0 my-auto teamNameTeamPage">{teamData.name}</h1>
+          <Button className="col-3 mx-auto my-auto joinButton" variant="dark" onClick={handleClick}>Join Team</Button>
         </Row>
         <Card className="col-6 teamMemberCard">
           <Card.Title className="teamMemberCardTitle pb-0">Team Members</Card.Title>
           <Card.Body>
             <div className="memberList">
               {teamUsers.map(user => {
-                return (<div className="memberListItem p-3">
-                  {user.username}
+                return (<div className="memberListItem p-3" key={user.id}>
+                    {user.username}
                 </div>
                 )
               })}

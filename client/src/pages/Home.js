@@ -26,7 +26,7 @@ export default function Home() {
 
                 <Carousel.Item >
                     <img
-                        className="d-block mx-auto carouselImg"
+                        className="mx-auto carouselImg"
                         src={carousel1}
                         alt="First slide"
                     />
@@ -35,7 +35,7 @@ export default function Home() {
                 </Carousel.Item>
                 <Carousel.Item >
                     <img
-                        className="d-block mx-auto carouselImg"
+                        className="mx-auto carouselImg"
                         src={carousel2}
                         alt="Second slide"
                     />
@@ -45,7 +45,7 @@ export default function Home() {
                 </Carousel.Item>
                 <Carousel.Item >
                     <img
-                        className="d-block mx-auto carouselImg"
+                        className="mx-auto carouselImg"
                         src={carousel3}
                         alt="Third slide"
                     />
@@ -61,8 +61,11 @@ export default function Home() {
 
             {user ? (
                 <>
-                    <SearchBar />
+                    <h3>Step 1: Create or search for a team.</h3>
+                    <h3>Step 2: Add your favorite restaurants <Link to="/restaurants">here.</Link></h3>
+                    <h3>Step 3: Have your voice heard and eat where you want to eat and not where Jim says everyday!</h3>
                     <CreateTeamForm />
+                    <SearchBar />
                 </>
             ) : (
                 <>
