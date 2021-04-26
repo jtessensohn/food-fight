@@ -4,14 +4,13 @@ import '../css/Homepage.css'
 import { Button, Carousel } from 'react-bootstrap';
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux';
-import SearchBar from '../components/SearchBar';
 import Navigation from '../components/Navigation';
 import carousel1 from '../images/carousel1.png'
 import carousel2 from '../images/carousel2.png'
 import carousel3 from '../images/carousel3.png'
 import '../css/carousel.css'
-import CreateTeamForm from '../components/CreateTeamForm';
 import Footer from '../components/Footer';
+import Search from '../components/Search';
 
 
 
@@ -64,8 +63,7 @@ export default function Home() {
                     <h3>Step 1: Create or search for a team.</h3>
                     <h3>Step 2: Add your favorite restaurants <Link to="/restaurants">here.</Link></h3>
                     <h3>Step 3: Have your voice heard and eat where you want to eat and not where Jim says everyday!</h3>
-                    <CreateTeamForm />
-                    <SearchBar />
+                    <Search />
                 </>
             ) : (
                 <>
