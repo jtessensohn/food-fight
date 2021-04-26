@@ -2,7 +2,11 @@
 }
 
 .carouselImg {
-    width: 300px;
+    /* width: 300px;
     object-fit: fill;
-    height: 300px;
+    height: 300px; */
+    border-radius: 25px;
+    box-shadow: 0px 0px 10px 10px;
+    margin-top: 5%;
+    margin-bottom: 5%;
 }
