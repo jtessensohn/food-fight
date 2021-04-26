@@ -11,6 +11,8 @@ export default function Team() {
   const [teamUsers, setTeamUsers] = useState([])
   const [teamRestaurants, setTeamRestaurants] = useState([])
   const [fightRestaurants, setFightRestaurants] = useState([])
+  const [isClicked, setIsClicked] = useState('NOT_CLICKED')
+  const [winningRestaurant, setWinningRestaurant] = useState([])
   const { id } = useParams()
 
   const getTeamById = () => {
@@ -63,23 +65,36 @@ export default function Team() {
   }, [setTeam, setTeamUsers])
 
 
-function handleOnDragEnd(result) {
-  if(!result.destination) return;
-console.log(result)
-const state = {
-  restaurants:Array.from(teamRestaurants),
-  fight:Array.from(fightRestaurants)
-}
-const source = result.source.droppableId
-const destination = result.destination.droppableId
-const [reorderedItem] = state[source].splice(result.source.index, 1)
-  state[destination].splice(result.destination.index, 0, reorderedItem)
+  function handleOnDragEnd(result) {
+    if (!result.destination) return;
+    console.log(result)
+    const state = {
+      restaurants: Array.from(teamRestaurants),
+      fight: Array.from(fightRestaurants)
+    }
+    const source = result.source.droppableId
+    const destination = result.destination.droppableId
+    const [reorderedItem] = state[source].splice(result.source.index, 1)
+    state[destination].splice(result.destination.index, 0, reorderedItem)
 
-  setTeamRestaurants(state.restaurants)
-  setFightRestaurants(state.fight)
-}
+    setTeamRestaurants(state.restaurants)
+    setFightRestaurants(state.fight)
+  }
 
+  function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+  }
 
+  const initiateFight = (e) => {
+    setIsClicked('CLICKED')
+    e.preventDefault()
+    // console.log('fighting')
+    const winning = getRandomInt(0, fightRestaurants.length)
+    console.log(winning)
+    setWinningRestaurant(fightRestaurants[winning])
+  }
 
   return (
     <div>
@@ -109,9 +124,9 @@ const [reorderedItem] = state[source].splice(result.source.index, 1)
 
 
       <Row>
-          <DragDropContext onDragEnd={handleOnDragEnd}>
-        <Card className="col-4 mx-auto ">
-          <Card.Title>Restaurants</Card.Title>
+        <DragDropContext onDragEnd={handleOnDragEnd}>
+          <Card className="col-4 mx-auto ">
+            <Card.Title>Restaurants</Card.Title>
             <Droppable droppableId="restaurants">
               {(provided) => (
                 <Card.Body {...provided.droppableProps} ref={provided.innerRef}>
@@ -119,11 +134,11 @@ const [reorderedItem] = state[source].splice(result.source.index, 1)
                     return (
                       <Draggable key={restaurant.id} draggableId={restaurant.id.toString()} index={index}>
                         {(provided) => (
-                      <div {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
-                        <ul>
-                        {restaurant.name}
-                        </ul>
-                      </div>
+                          <div {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
+                            <ul>
+                              {restaurant.name}
+                            </ul>
+                          </div>
                         )}
                       </Draggable>
                     )
@@ -131,33 +146,44 @@ const [reorderedItem] = state[source].splice(result.source.index, 1)
                 </Card.Body>
               )}
             </Droppable>
-        </Card>
+          </Card>
 
 
 
-        <Card className="col-6">
-          <Card.Title>Fights</Card.Title>
-            <Droppable droppableId="fight">
-              {(provided) => (
-                <Card.Body {...provided.droppableProps} ref={provided.innerRef}>
-                  {fightRestaurants.map((restaurant, index) => {
-                    return (
-                      <Draggable key={restaurant.id} draggableId={restaurant.id.toString()} index={index}>
-                        {(provided) => (
-                      <div {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
-                        <ul>
-                        {restaurant.name}
-                        </ul>
-                      </div>
-                        )}
-                      </Draggable>
-                    )
-                  })}
-                </Card.Body>
+          <Card className="col-6 m-3 mr-">
+            {isClicked === "CLICKED" ? (
+              <div>
+                <Card.Title>Winner</Card.Title>
+                <Card.Body>{winningRestaurant.name}</Card.Body>
+              </div>
+            ) : (
+              <>
+                <Card.Title>Fights</Card.Title>
+                <Droppable droppableId="fight">
+                  {(provided) => (
+                    <Card.Body {...provided.droppableProps} ref={provided.innerRef}>
+                      {fightRestaurants.map((restaurant, index) => {
+                        return (
+                          <Draggable key={restaurant.id} draggableId={restaurant.id.toString()} index={index}>
+                            {(provided) => (
+                              <div {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
+                                <ul>
+                                  {restaurant.name}
+                                </ul>
+                              </div>
+                            )}
+                          </Draggable>
+                        )
+                      })}
+                    </Card.Body>
+                  )}
+                </Droppable>
+                <Button onClick={initiateFight}>Fight</Button>
+            </>
               )}
-            </Droppable>
-        </Card>
-          </DragDropContext>
+            </Card>
+
+        </DragDropContext>
       </Row>
       <Footer />
     </div>
