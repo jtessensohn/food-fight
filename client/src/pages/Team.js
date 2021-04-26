@@ -57,8 +57,8 @@ export default function Team() {
       <Navigation />
       <Row className="mt-3">
         <Row className="col-6">
-          <h1 className="col-12 teamName">{team.name}</h1>
-          <Button className="col-3 mx-auto joinButton" variant="dark" onClick={handleClick}>Join Team</Button>
+          <h1 className="col-12 p-0 my-auto teamNameTeamPage">{team.name}</h1>
+          <Button className="col-3 mx-auto my-auto joinButton" variant="dark" onClick={handleClick}>Join Team</Button>
         </Row>
 
         <Card className="col-6 teamMemberCard">

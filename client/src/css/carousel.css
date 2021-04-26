@@ -1,9 +1,8 @@
 .carouselContainer {
-    width: 100vw;
 }
 
 .carouselImg {
-    width: 600px;
+    width: 300px;
     object-fit: fill;
     height: 300px;
 }
