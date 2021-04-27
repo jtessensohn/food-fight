@@ -78,11 +78,11 @@ export default function Search() {
       }, [setTeams])
 
     return (
-        <div className="searchFor">
+        <div className="mb-5">
             <form onSubmit={handleSubmit}>
-              <Row className="col-8 justify-content-around mx-auto">
+              <Row className="col-8 justify-content-around mx-auto my-auto">
                 <CreatableSelect
-                    className="search col-9"
+                    className="search col-9 my-auto"
                     placeholder="Create Or Pick Your Team"
                     isClearable
                     isDisabled={isLoading}
