@@ -77,9 +77,11 @@ export default function Search() {
       }, [setTeams])
 
     return (
-        <div>
+        <div className="searchForm">
             <form onSubmit={handleSubmit}>
                 <CreatableSelect
+                    className="search"
+                    placeholder="Create Or Pick Your Team"
                     isClearable
                     isDisabled={isLoading}
                     isLoading={isLoading}
@@ -88,7 +90,7 @@ export default function Search() {
                     options={options}
                     value={value}
                 />
-                <Button type="submit">Join</Button>
+                <Button type="submit" className="searchButton" sz="lg">Join</Button>
             </form>
         </div>
     )
