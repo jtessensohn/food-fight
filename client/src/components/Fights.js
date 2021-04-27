@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export default function Fights(props) {
+export default function Fights() {
     const [fightName, setFightName] = useState({
         name: ''
     })

@@ -13,6 +13,7 @@ export default function Team() {
   const [teamData, setTeamData] = useState([])
   const [teamUsers, setTeamUsers] = useState([])
   const [teamRestaurants, setTeamRestaurants] = useState([])
+  const [fight, setFight] = useState(null)
   const [fightRestaurants, setFightRestaurants] = useState([])
   const [isClicked, setIsClicked] = useState('NOT_CLICKED')
   const [winningRestaurant, setWinningRestaurant] = useState([])
@@ -26,6 +27,30 @@ export default function Team() {
       .then(res => res.json())
       .then(data => {
         setTeamData(data)
+      })
+  }
+
+  const getCurrentFight = () => {
+    fetch('/api/v1/fights/current')
+      .then(res => res.json())
+      .then(data => {
+        if (data.error) {
+          alert(data.error)
+          return
+        }
+        setFight(data)
+        setFightRestaurants(data.Restaurants)
+        const competitors = data.Restaurants
+        fetch('/api/v1/restaurants')
+          .then(res => res.json())
+          .then(restaurants => {
+            const filteredRestaurants = restaurants.filter((restaurant) => {
+              return !competitors.some((competitor) => {
+                return competitor.id === restaurant.id
+              })
+            })
+            setTeamRestaurants(filteredRestaurants)
+          })
       })
   }
 
@@ -57,24 +82,46 @@ export default function Team() {
       })
   }
 
-  const getRestaurant = () => {
-    fetch('/api/v1/restaurants')
-      .then(res => res.json())
-      .then(data => {
-        setTeamRestaurants(data)
-      })
-  }
 
   useEffect(() => {
     getTeamById()
     allUsers()
-    getRestaurant()
+    getCurrentFight()
   }, [setTeam, setTeamUsers])
 
 
-  function handleOnDragEnd(result) {
+  async function handleOnDragEnd(result) {
     if (!result.destination) return;
-    console.log(result)
+    try {
+      // try to send update to backend
+      if (result.destination.droppableId === "fight") {
+        // if it is dragged to the fight column, add competitor to fight
+        await fetch(`/api/v1/fights/${fight.id}/competitors/`, {
+          method: "POST",
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            id: result.draggableId
+          })
+        }).then(res => res.json())
+          .then(data => {
+            if (data.error) throw data.error
+          })
+      } else if (result.destination.droppableId === "restaurants") {
+        // if it is dragged to the restaurants column, remove competitor from fight
+        await fetch(`/api/v1/fights/${fight.id}/competitors/${result.draggableId}`, {
+          method: "DELETE"
+        }).then(res => res.json())
+          .then(data => {
+            if (data.error) throw data.error
+          })
+      }
+    } catch (error) {
+      alert(error)
+      getCurrentFight()
+      return;
+    }
     const state = {
       restaurants: Array.from(teamRestaurants),
       fight: Array.from(fightRestaurants)
@@ -102,11 +149,10 @@ export default function Team() {
     setWinningRestaurant(fightRestaurants[winning])
   }
 
-  const resetButton = (e) =>  {
+  const resetButton = (e) => {
     setIsClicked('NOT_CLICKED')
     e.preventDefault()
     setFightRestaurants([])
-    getRestaurant()
   }
 
 
@@ -125,7 +171,7 @@ export default function Team() {
             <div className="memberList">
               {teamUsers.map(user => {
                 return (<div className="memberListItem p-3" key={user.id}>
-                    {user.username}
+                  {user.username}
                 </div>
                 )
               })}
@@ -141,14 +187,14 @@ export default function Team() {
             <Droppable droppableId="restaurants">
               {(provided) => (
                 <Card.Body {...provided.droppableProps} ref={provided.innerRef}> Drag and Drop restaurants into the fight box to select them.
-                <br />
-                <br />
+                  <br />
+                  <br />
                   {teamRestaurants.map((restaurant, index) => {
                     return (
                       <Draggable key={restaurant.id} draggableId={restaurant.id.toString()} index={index}>
                         {(provided) => (
                           <div {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
-                              {restaurant.name}
+                            {restaurant.name}
                           </div>
                         )}
                       </Draggable>
@@ -162,42 +208,47 @@ export default function Team() {
 
 
           <Card className="col-6 m-3 mr-">
-            {isClicked === "CLICKED" ? (
-              <div>
-                <Card.Title>Winner</Card.Title>
-                <Card.Body>{winningRestaurant.name}
-                <br></br>
-                <br></br>
-                <Button onClick={resetButton}>Reset</Button>
-                </Card.Body>
-              </div>
-            ) : (
-              <>
-                <Fights />
-                <Card.Title>Fight</Card.Title>
-                <Droppable droppableId="fight">
-                  {(provided) => (
-                    <Card.Body {...provided.droppableProps} ref={provided.innerRef}>
-                      {fightRestaurants.map((restaurant, index) => {
-                        return (
-                          <Draggable key={restaurant.id} draggableId={restaurant.id.toString()} index={index}>
-                            {(provided) => (
-                              <div {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
+            {fight ? (
+              fight.WinnerId ? (
+                <div>
+                  <Card.Title>Winner</Card.Title>
+                  <Card.Body>{fight.Winner.Restaurant.name}
+                    <br></br>
+                    <br></br>
+                    <Button onClick={resetButton}>Reset</Button>
+                  </Card.Body>
+                </div>
+              ) : (
+                <>
+                  <Card.Title>{fight.name}</Card.Title>
+                  <Droppable droppableId="fight">
+                    {(provided) => (
+                      <Card.Body {...provided.droppableProps} ref={provided.innerRef}>
+                        {fightRestaurants.map((restaurant, index) => {
+                          return (
+                            <Draggable key={restaurant.id} draggableId={restaurant.id.toString()} index={index}>
+                              {(provided) => (
+                                <div {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
                                   {restaurant.name}
-                              </div>
-                            )}
-                          </Draggable>
-                        )
-                      })}
-                    </Card.Body>
-                  )}
-                </Droppable>
-                <Button onClick={initiateFight}>Fight</Button>
-                or
-                <Button>Random and vote between two</Button>
-            </>
-              )}
-            </Card>
+                                </div>
+                              )}
+                            </Draggable>
+                          )
+                        })}
+                      </Card.Body>
+                    )}
+                  </Droppable>
+                  <Button onClick={initiateFight}>Fight</Button>
+                  or
+                  <Button>Random and vote between two</Button>
+                </>
+
+
+              )
+            ) : (
+              <Fights />
+            )}
+          </Card>
         </DragDropContext>
       </Row>
       <Footer />

@@ -3,15 +3,15 @@ const checkAuth = require('../auth/checkAuth');
 var router = express.Router();
 const db = require('../models');
 
-router.get('/', async function(req, res) {
+router.get('/', async function (req, res) {
     const fights = await db.Fight.findAll({
         include: [{
             model: db.User,
             attributes: ['username', 'id']
         },
         {
-           model: db.Team,
-           attributes: ['name', 'id'] 
+            model: db.Team,
+            attributes: ['name', 'id']
         }]
     })
     res.json(fights)
@@ -33,20 +33,25 @@ router.post('/', checkAuth, async (req, res) => {
 
 
 //1. get current fight
-    // findAll getOrderBy Date descending createdAt limit 1
-router.get('/current', async (req,res) => {
+// findAll getOrderBy Date descending createdAt limit 1
+router.get('/current', async (req, res) => {
     const fight = await db.Fight.findAll({
-        order: [['createdAt', 'DESC']], 
+        order: [['createdAt', 'DESC']],
         limit: 1,
-        include: db.Competitor
+        include: [
+            db.Competitor,
+             db.Restaurant,
+              {model:db.Competitor,as:"Winner",include:db.Restaurant}
+        
+        ]
 
     })
     res.send(fight[0])
 })
-    
+
 //2. add competitor to new fight
-    // same as adding user to team.
-router.post('/:id/competitors', async (req,res) => {
+// same as adding user to team.
+router.post('/:id/competitors', async (req, res) => {
     if (!req.body.id) {
         return res.status(400).json({
             error: "please include a competitor id"
@@ -61,7 +66,7 @@ router.post('/:id/competitors', async (req,res) => {
             error: "could not find restaurant with that id"
         })
     }
-    if(await fight.hasRestaurant(restaurant)){
+    if (await fight.hasRestaurant(restaurant)) {
         return res.status(400).json({
             error: "Competitor already added."
         })
@@ -80,16 +85,16 @@ router.post('/:id/competitors', async (req,res) => {
 
 
 //3. remove competitor to new fight
-    // remove competitor
-router.delete('/:id/competitors/:restaurantId', async (req,res) => {
+// remove competitor
+router.delete('/:id/competitors/:restaurantId', async (req, res) => {
     const fight = await db.Fight.findByPk(req.params.id)
     const restaurant = await db.Restaurant.findByPk(req.params.restaurantId)
-    if(!restaurant){
+    if (!restaurant) {
         return res.status(400).json({
             error: "could not find that restaurant "
         })
     }
-    if(!(await fight.hasRestaurant(restaurant))){
+    if (!(await fight.hasRestaurant(restaurant))) {
         return res.status(400).json({
             error: "Competitor already removed."
         })
@@ -101,16 +106,33 @@ router.delete('/:id/competitors/:restaurantId', async (req,res) => {
         }
     })
     res.status(200).json({
-        success:"competitor removed."
+        success: "competitor removed."
     })
 })
 
 
 // pick random winner
-    //need to winner column to fight table(connection to restaurant )
-    // getAll competitors for a fight, pick 1.
+router.get('/current/winner', async (req, res) => {
+    const fight = (await db.Fight.findAll({
+        order: [['createdAt', 'DESC']],
+        limit: 1,
+        include: [db.Competitor, db.Restaurant]
+    }))[0]
+    console.log(fight)
+    function getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+    }
+    const winnerId = getRandomInt(0, fight.Competitors.length)
+    const winner = fight.Competitors[winnerId]
+    await fight.setWinner(winner)
+    res.status(200).json(await winner.getRestaurant())
+})
+//need to winner column to fight table(connection to restaurant )
+// getAll competitors for a fight, pick 1.
 // vote for competitor
-    // find competitor and increase vote by 1.
+// find competitor and increase vote by 1.
 
 
 module.exports = router;
