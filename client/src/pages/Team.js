@@ -98,8 +98,14 @@ export default function Team() {
     e.preventDefault()
     // console.log('fighting')
     const winning = getRandomInt(0, fightRestaurants.length)
-    console.log(winning)
     setWinningRestaurant(fightRestaurants[winning])
+  }
+
+  const resetButton = (e) =>  {
+    setIsClicked('NOT_CLICKED')
+    e.preventDefault()
+    setFightRestaurants([])
+    getRestaurant()
   }
 
   return (
@@ -135,15 +141,15 @@ export default function Team() {
             <Card.Title>Restaurants</Card.Title>
             <Droppable droppableId="restaurants">
               {(provided) => (
-                <Card.Body {...provided.droppableProps} ref={provided.innerRef}>
+                <Card.Body {...provided.droppableProps} ref={provided.innerRef}> Drag and Drop restaurants into the fight box to select them.
+                <br />
+                <br />
                   {teamRestaurants.map((restaurant, index) => {
                     return (
                       <Draggable key={restaurant.id} draggableId={restaurant.id.toString()} index={index}>
                         {(provided) => (
                           <div {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
-                            <ul>
                               {restaurant.name}
-                            </ul>
                           </div>
                         )}
                       </Draggable>
@@ -160,11 +166,15 @@ export default function Team() {
             {isClicked === "CLICKED" ? (
               <div>
                 <Card.Title>Winner</Card.Title>
-                <Card.Body>{winningRestaurant.name}</Card.Body>
+                <Card.Body>{winningRestaurant.name}
+                <br></br>
+                <br></br>
+                <Button onClick={resetButton}>Reset</Button>
+                </Card.Body>
               </div>
             ) : (
               <>
-                <Card.Title>Fights</Card.Title>
+                <Card.Title>Fight</Card.Title>
                 <Droppable droppableId="fight">
                   {(provided) => (
                     <Card.Body {...provided.droppableProps} ref={provided.innerRef}>
@@ -173,9 +183,7 @@ export default function Team() {
                           <Draggable key={restaurant.id} draggableId={restaurant.id.toString()} index={index}>
                             {(provided) => (
                               <div {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
-                                <ul>
                                   {restaurant.name}
-                                </ul>
                               </div>
                             )}
                           </Draggable>
@@ -185,6 +193,8 @@ export default function Team() {
                   )}
                 </Droppable>
                 <Button onClick={initiateFight}>Fight</Button>
+                or
+                <Button>Random and vote between two</Button>
             </>
               )}
             </Card>
