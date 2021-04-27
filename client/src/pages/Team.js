@@ -136,11 +136,10 @@ export default function Team() {
         <DragDropContext onDragEnd={handleOnDragEnd}>
           <Card className="col-5">
             <Card.Title>Restaurants</Card.Title>
+            <Card.Subtitle className="mb-2 text-muted">Drag and Drop restaurants into the fight box to select them.</Card.Subtitle>
             <Droppable droppableId="restaurants">
               {(provided) => (
-                <Card.Body className="restaurantCardBody" {...provided.droppableProps} ref={provided.innerRef}> Drag and Drop restaurants into the fight box to select them.
-                <br />
-                <br />
+                <Card.Body className="restaurantCardBody" {...provided.droppableProps} ref={provided.innerRef}> 
                   {teamRestaurants.map((restaurant, index) => {
                     return (
                       <Draggable key={restaurant.id} draggableId={restaurant.id.toString()} index={index}>
@@ -200,7 +199,6 @@ export default function Team() {
 
         </DragDropContext>
       </Row>
-      <Footer />
     </div>
   )
 }

@@ -2,6 +2,8 @@ import React from 'react'
 import { Form, Col, Button, Card } from 'react-bootstrap'
 import { useState } from 'react';
 import Navigation from '../components/Navigation';
+import '../css/restaurant.css'
+import Footer from '../components/Footer';
 
 
 export default function Restaurants() {
@@ -53,32 +55,35 @@ export default function Restaurants() {
     <div>
       <Navigation />
       {/* // attach handle submit to form */}
-      <Form onSubmit={handleSubmit}>
-        <Card className="col-6 m-5 p-5 shadow-lg p-3 mb-5 bg-dark rounded mx-auto">
-          <Form.Row>
-            <Form.Group as={Col} controlId="formGridEmail" className="col-12 mx-auto">
-              <Form.Label className="text-white">Restaurant Name</Form.Label>
-              <Form.Control onChange={handleChange} value={restaurantForm.name} name='name' type="text" placeholder="Enter Restaurant" />
-            </Form.Group>
-          </Form.Row>
+      <Form onSubmit={handleSubmit} className="">
+        <Card className="restaurantCard col-6 m-5 p-5 shadow-lg p-3 mb-5 bg-dark rounded mx-auto">
+          {/* <Card.Img url="../images/restaurant.jpg" alt="Card image" />
+          <Card.ImgOverlay> */}
+            <Form.Row>
+              <Form.Group as={Col} controlId="formGridEmail" className="col-12 mx-auto">
+                <Form.Label className="text-white">Restaurant Name</Form.Label>
+                <Form.Control onChange={handleChange} value={restaurantForm.name} name='name' type="text" placeholder="Enter Restaurant" />
+              </Form.Group>
+            </Form.Row>
 
-          <Form.Row>
-            <Form.Group controlId="formGridAddress2" className="col-12 mx-auto">
-              <Form.Label className="text-white">Category</Form.Label>
-              <Form.Control onChange={handleChange} value={restaurantForm.category} name='category' placeholder="Category" />
-            </Form.Group>
-          </Form.Row>
-          {/* <Form.Row>
-          <Form.Group as={Col} controlId="formGridPassword" className="col-4 mx-auto">
-          <Form.Label className="text-white">Zip Code</Form.Label>
-          <Form.Control type="number" placeholder="Zip Code" />
-          </Form.Group>
-        </Form.Row> */}
+            <Form.Row>
+              <Form.Group controlId="formGridAddress2" className="col-12 mx-auto">
+                <Form.Label className="text-white">Category</Form.Label>
+                <Form.Control onChange={handleChange}value={restaurantForm.category} name='category' placeholder="Category" />
+              </Form.Group>
+            </Form.Row>
+            {/* <Form.Row>
+              <Form.Group as={Col} controlId="formGridPassword" className="col-4 mx-auto">
+              <Form.Label className="text-white">Zip Code</Form.Label>
+              <Form.Control type="number" placeholder="Zip Code" />
+              </Form.Group>
+            </Form.Row> */}
 
-          {/* // does your button have a submit type? */}
-          <Button variant="primary" type="submit" className="col-6 mx-auto">
-            Submit
-          </Button>
+            {/* // does your button have a submit type? */}
+            <Button variant="primary" type="submit" className="col-3 mx-auto">
+              Submit
+            </Button>
+          {/* </Card.ImgOverlay> */}
         </Card>
       </Form>
       <Card className="col-6 m-5 p-5 shadow-lg p-3 mb-5 bg-dark rounded mx-auto">
