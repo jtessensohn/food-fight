@@ -7,6 +7,7 @@ import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
 import "../css/team.css"
 import { setTeam } from "../redux/actions";
+import Fights from "../components/Fights";
 
 export default function Team() {
   const [teamData, setTeamData] = useState([])
@@ -108,6 +109,8 @@ export default function Team() {
     getRestaurant()
   }
 
+
+
   return (
     <div>
       <Navigation />
@@ -130,10 +133,6 @@ export default function Team() {
           </Card.Body>
         </Card>
       </Row>
-
-
-
-
 
       <Row>
         <DragDropContext onDragEnd={handleOnDragEnd}>
@@ -174,6 +173,7 @@ export default function Team() {
               </div>
             ) : (
               <>
+                <Fights />
                 <Card.Title>Fight</Card.Title>
                 <Droppable droppableId="fight">
                   {(provided) => (
@@ -198,7 +198,6 @@ export default function Team() {
             </>
               )}
             </Card>
-
         </DragDropContext>
       </Row>
       <Footer />
