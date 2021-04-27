@@ -4,12 +4,10 @@ import '../css/Homepage.css'
 import { Button, Card, Carousel, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux';
-import Navigation from '../components/Navigation';
 import carousel1 from '../images/carousel1.png'
 import carousel2 from '../images/carousel2.png'
 import carousel3 from '../images/carousel3.png'
 import '../css/carousel.css'
-import Footer from '../components/Footer';
 import Search from '../components/Search';
 
 
@@ -19,7 +17,6 @@ export default function Home() {
 
     return (
         <div>
-            <Navigation />
             <Row className="firstRow">
                 <div className="col-6 my-auto mx-auto">
                     <Card className="homePageCard">

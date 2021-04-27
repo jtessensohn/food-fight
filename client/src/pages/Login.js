@@ -74,7 +74,7 @@ export default function Login() {
                                 </form>
                                 <div class="card-footer small ">
                                     New to the fight? Keep your head down and
-                                    <Link className="d-block text-center mt-2 small" to="/register">Register</Link>
+                                    <Link className="d-block text-center mt-2 " to="/register">Register</Link>
                                 </div>
                             </div>
                         </div>

@@ -42,49 +42,51 @@ export default function Register() {
     }
 
     return (
-        <div>
-            <div className="container">
-                <div className="row">
-                    <div className="col-lg-10 col-xl-9 mx-auto">
-                        <div className="card card-login flex-row my-5">
-                            <div className="card-img-left d-none d-md-flex ">
-                                {/* background image set in css */}
-                            </div>
-                            <div className="card-body">
-                                <h5 className="card-title text-center">Register</h5>
+        <>
+            <div>
+                <div className="container">
+                    <div className="row">
+                        <div className="col-lg-10 col-xl-9 mx-auto">
+                            <div className="card card-login flex-row my-5">
+                                <div className="card-img-left d-none d-md-flex ">
+                                    {/* background image set in css */}
+                                </div>
+                                <div className="card-body">
+                                    <h5 className="card-title text-center">Register</h5>
 
 
-                                <form className="form-login" onSubmit={handleSubmit}>
-                                    <div className="form-label-group">
-                                        <input onChange={handleChange} type="text" id="inputUsername" className="form-control" placeholder="Username" value={form.username} name="username" required autoFocus />
-                                        <label htmlFor="inputUsername">Username</label>
-                                    </div>
+                                    <form className="form-login" onSubmit={handleSubmit}>
+                                        <div className="form-label-group">
+                                            <input onChange={handleChange} type="text" id="inputUsername" className="form-control" placeholder="Username" value={form.username} name="username" required autoFocus />
+                                            <label htmlFor="inputUsername">Username</label>
+                                        </div>
 
-                                    <hr></hr>
+                                        <hr></hr>
 
-                                    <div className="form-label-group">
-                                        <input onChange={handleChange} type="password" id="inputPassword" className="form-control" placeholder="Password" value={form.password} name="password" required />
-                                        <label htmlFor="inputPassword">Password</label>
-                                    </div>
+                                        <div className="form-label-group">
+                                            <input onChange={handleChange} type="password" id="inputPassword" className="form-control" placeholder="Password" value={form.password} name="password" required />
+                                            <label htmlFor="inputPassword">Password</label>
+                                        </div>
 
 
-                                    {/* add later to check to see if the passwords match */}
-                                    {/* <div className="form-label-group">
+                                        {/* add later to check to see if the passwords match */}
+                                        {/* <div className="form-label-group">
                                         <input type="password" id="inputConfirmPassword" className="form-control" placeholder="Password" required />
                                         <label for="inputConfirmPassword">Confirm password</label>
                                     </div> */}
 
-                                    <button className="btn btn-lg button btn-block mb-3 text-uppercase" type="submit">Register</button>
-                                </form>
-                                <div class="card-footer small ">
-                                    Already a fighter?
+                                        <button className="btn btn-lg button btn-block mb-3 text-uppercase" type="submit">Register</button>
+                                    </form>
+                                    <div class="card-footer small ">
+                                        Already a fighter?
                                     <Link className="d-block text-center mt-2 " to="/login">Sign In</Link>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     )
 }
