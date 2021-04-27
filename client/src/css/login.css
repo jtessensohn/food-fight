@@ -3,11 +3,6 @@
     --input-padding-y: .75rem;
 }
 
-body {
-    background: #000000;
-    background: linear-gradient(to right, #5e5e5e, #afafaf);
-}
-
 .card-login {
     border: 0;
     border-radius: 1rem;

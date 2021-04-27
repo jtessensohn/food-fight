@@ -35,8 +35,8 @@ export default function Navigation() {
     }, [])
 
     return (
-        <div>
-            <Navbar bg="dark" variant="dark" className="d-flex justify-content-between">
+        <div className="navbarContainer">
+            <Navbar bg="" variant="light" className="d-flex justify-content-between">
                 <Navbar.Brand as={Link} to="/">Food Fight</Navbar.Brand>
                 <Nav>
                 {user ? (
