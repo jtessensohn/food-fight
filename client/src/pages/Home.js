@@ -34,7 +34,7 @@ export default function Home() {
                     </Card>
                 </div>
 
-                
+
                 <div className="col-6 m-auto">
                     <img className="logo py-0" src={logov2} alt='Food-fight-logo.png'></img>
                 </div>
@@ -77,10 +77,19 @@ export default function Home() {
                             </Carousel>
                         </div>
                     ) : (
-                        
-                        <div className="col-6">
-                            <Button className="registerloginButton" as={Link} to="/register" >Register</Button>
-                            <Button as={Link} to="/login" className="registerloginButton">Login</Button>
+
+                        <div className="col-12 my-auto mx-auto">
+                            <Card className="homePageCard">
+                                <Card.Body>
+                                    <Card.Title>
+                                        Lookin' for a fight? Register or log in below:
+                                    </Card.Title>
+                                    <Card.Text>
+                                        <Button className="registerloginButton" as={Link} to="/register" >Register</Button>
+                                        <Button as={Link} to="/login" className="registerloginButton">Login</Button>
+                                    </Card.Text>
+                                </Card.Body>
+                            </Card>
                         </div>
                     )}
                 </div>

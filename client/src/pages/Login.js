@@ -8,7 +8,7 @@ import { setUser } from '../redux/actions';
 export default function Login() {
     const history = useHistory();
     const dispatch = useDispatch();
-    const [ form, setForm ] = useState({
+    const [form, setForm] = useState({
         username: '',
         password: ''
     })
@@ -70,9 +70,12 @@ export default function Login() {
                                         <label htmlFor="inputPassword">Password</label>
                                     </div>
 
-                                    <button className="btn btn-lg button btn-block text-uppercase" type="submit">Sign In</button>
-                                    <Link className="d-block text-center mt-2 small" to="/register">New User</Link>
+                                    <button className="btn btn-lg button btn-block mb-3 text-uppercase" type="submit">Sign In</button>
                                 </form>
+                                <div class="card-footer small ">
+                                    New to the fight? Keep your head down and
+                                    <Link className="d-block text-center mt-2 small" to="/register">Register</Link>
+                                </div>
                             </div>
                         </div>
                     </div>
