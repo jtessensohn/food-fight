@@ -4,14 +4,13 @@ import '../css/Homepage.css'
 import { Button, Card, Carousel, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux';
-import SearchBar from '../components/SearchBar';
 import Navigation from '../components/Navigation';
 import carousel1 from '../images/carousel1.png'
 import carousel2 from '../images/carousel2.png'
 import carousel3 from '../images/carousel3.png'
 import '../css/carousel.css'
-import CreateTeamForm from '../components/CreateTeamForm';
 import Footer from '../components/Footer';
+import Search from '../components/Search';
 
 
 
@@ -104,8 +103,7 @@ export default function Home() {
 
             {user ? (
                 <>
-                    <CreateTeamForm />
-                    <SearchBar />
+                    <Search />
                 </>
             ) : (
                 <div className="col-0">
