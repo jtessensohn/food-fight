@@ -3,8 +3,6 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router"
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 import { useDispatch } from "react-redux";
-import Navigation from "../components/Navigation";
-import Footer from "../components/Footer";
 import "../css/team.css"
 import { setTeam } from "../redux/actions";
 
@@ -110,7 +108,6 @@ export default function Team() {
 
   return (
     <div>
-      <Navigation />
       <Row className="mt-3 col-12 mx-auto">
         <Row className="col-6">
           <h1 className="col-12 p-0 my-auto teamNameTeamPage">{teamData.name}</h1>
