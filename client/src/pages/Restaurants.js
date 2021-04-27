@@ -27,6 +27,22 @@ export default function Restaurants() {
         category: restaurantForm.category,
       }),
     })
+      .then(res => res.json())
+      .then(data => {
+        if (data.error) {
+          alert(data.error)
+          setRestaurantForm({
+            name: '',
+            category: ''
+          })
+        } else {
+          alert(`Restaurant ${data.name} created. Get ready to fight`)
+          setRestaurantForm({
+            name: '',
+            category: ''
+          })
+        }
+      })
   }
   // create an handle Change for the fields.(don't forget your value's and names)
   const handleChange = (e) => {
@@ -44,14 +60,14 @@ export default function Restaurants() {
           {/* <Card.Img url="../images/restaurant.jpg" alt="Card image" />
           <Card.ImgOverlay> */}
             <Form.Row>
-              <Form.Group as={Col} controlId="formGridEmail" className="col-4 mx-auto">
+              <Form.Group as={Col} controlId="formGridEmail" className="col-12 mx-auto">
                 <Form.Label className="text-white">Restaurant Name</Form.Label>
                 <Form.Control onChange={handleChange} value={restaurantForm.name} name='name' type="text" placeholder="Enter Restaurant" />
               </Form.Group>
             </Form.Row>
 
             <Form.Row>
-              <Form.Group controlId="formGridAddress2" className="col-4 mx-auto">
+              <Form.Group controlId="formGridAddress2" className="col-12 mx-auto">
                 <Form.Label className="text-white">Category</Form.Label>
                 <Form.Control onChange={handleChange}value={restaurantForm.category} name='category' placeholder="Category" />
               </Form.Group>
@@ -70,7 +86,14 @@ export default function Restaurants() {
           {/* </Card.ImgOverlay> */}
         </Card>
       </Form>
-      <Footer />
+      <Card className="col-6 m-5 p-5 shadow-lg p-3 mb-5 bg-dark rounded mx-auto">
+        <Card.Title className="text-white">What am I looking at?</Card.Title>
+        <Card.Body className="text-white">
+          While we can't all agree on what to eat, we can certainly agree that restaurants exist.
+          The form above will allow you to submit your favorite restaurant to our database,
+          giving it a fighting chance to be what you eat.
+        </Card.Body>
+      </Card>
     </div>
   )
 }
