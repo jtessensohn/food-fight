@@ -22,7 +22,6 @@ function App() {
       .then(res => res.json())
       .then(data => {
         if (!data.error) {
-          console.log(data)
           dispatch(setUser(data))
         }
         setUserStatus('CHECKED')
