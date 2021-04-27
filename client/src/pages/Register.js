@@ -5,42 +5,42 @@ import { Link, useHistory } from 'react-router-dom'
 
 export default function Register() {
     const history = useHistory()
-    const [ form, setForm ] = useState({
-            username: '',
-            password: ''
+    const [form, setForm] = useState({
+        username: '',
+        password: ''
+    })
+
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        // console.log("submitted")
+        fetch('api/v1/users/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                username: form.username,
+                password: form.password
+            })
         })
-    
-        const handleSubmit = (event) => {
-            event.preventDefault()
-            // console.log("submitted")
-            fetch('api/v1/users/register', {
-                method: 'POST',
-                headers : {
-                    'Content-Type' : 'application/json'
-                },
-                body: JSON.stringify({
-                    username: form.username,
-                    password: form.password
-                })
+            .then(res => res.json())
+            .then(data => {
+                if (data.error) {
+                    alert(data.error)
+                } else {
+                    alert('User Registered successfully')
+                    history.push('/login')
+                }
             })
-                .then(res => res.json())
-                .then(data =>  {
-                    if (data.error) {
-                        alert(data.error)
-                    } else {
-                        alert('User Registered successfully')
-                        history.push('/login')
-                    }
-                })
-        }
-    
-        const handleChange = (event) => {
-            setForm({
-                ...form,
-                [event.target.name] : event.target.value
-            })
-        }
-        
+    }
+
+    const handleChange = (event) => {
+        setForm({
+            ...form,
+            [event.target.name]: event.target.value
+        })
+    }
+
     return (
         <div>
             <div className="container">
@@ -74,11 +74,11 @@ export default function Register() {
                                         <label for="inputConfirmPassword">Confirm password</label>
                                     </div> */}
 
-                                    <button className="btn btn-lg button btn-block text-uppercase" type="submit">Register</button>
-                                    <Link className="d-block text-center mt-2 small" to="/login">Sign In</Link>
+                                    <button className="btn btn-lg button btn-block mb-3 text-uppercase" type="submit">Register</button>
                                 </form>
-                                <div class="card-footer ">
-                                Hurry! If you don't join your team, who knows where you'll be eating.
+                                <div class="card-footer small ">
+                                    Already a fighter?
+                                    <Link className="d-block text-center mt-2 " to="/login">Sign In</Link>
                                 </div>
                             </div>
                         </div>

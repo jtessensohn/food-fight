@@ -3,15 +3,15 @@ const checkAuth = require('../auth/checkAuth');
 var router = express.Router();
 const db = require('../models');
 
-router.get('/', async function(req, res) {
+router.get('/', async function (req, res) {
     const fights = await db.Fight.findAll({
         include: [{
             model: db.User,
             attributes: ['username', 'id']
         },
         {
-           model: db.Team,
-           attributes: ('name', 'id') 
+            model: db.Team,
+            attributes: ('name', 'id')
         }]
     })
     res.json(fights)

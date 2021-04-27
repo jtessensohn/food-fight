@@ -25,6 +25,22 @@ export default function Restaurants() {
         category: restaurantForm.category,
       }),
     })
+      .then(res => res.json())
+      .then(data => {
+        if (data.error) {
+          alert(data.error)
+          setRestaurantForm({
+            name: '',
+            category: ''
+          })
+        } else {
+          alert(`Restaurant ${data.name} created. Get ready to fight`)
+          setRestaurantForm({
+            name: '',
+            category: ''
+          })
+        }
+      })
   }
   // create an handle Change for the fields.(don't forget your value's and names)
   const handleChange = (e) => {
@@ -39,29 +55,29 @@ export default function Restaurants() {
       {/* // attach handle submit to form */}
       <Form onSubmit={handleSubmit}>
         <Card className="col-6 m-5 p-5 shadow-lg p-3 mb-5 bg-dark rounded mx-auto">
-        <Form.Row>
-          <Form.Group as={Col} controlId="formGridEmail" className="col-4 mx-auto">
-            <Form.Label className="text-white">Restaurant Name</Form.Label>
-            <Form.Control onChange={handleChange} value={restaurantForm.name} name='name' type="text" placeholder="Enter Restaurant" />
-          </Form.Group>
-        </Form.Row>
+          <Form.Row>
+            <Form.Group as={Col} controlId="formGridEmail" className="col-12 mx-auto">
+              <Form.Label className="text-white">Restaurant Name</Form.Label>
+              <Form.Control onChange={handleChange} value={restaurantForm.name} name='name' type="text" placeholder="Enter Restaurant" />
+            </Form.Group>
+          </Form.Row>
 
-        <Form.Row>
-          <Form.Group controlId="formGridAddress2" className="col-4 mx-auto">
-            <Form.Label className="text-white">Category</Form.Label>
-            <Form.Control onChange={handleChange}value={restaurantForm.category} name='category' placeholder="Category" />
-          </Form.Group>
-        </Form.Row>
-        {/* <Form.Row>
+          <Form.Row>
+            <Form.Group controlId="formGridAddress2" className="col-12 mx-auto">
+              <Form.Label className="text-white">Category</Form.Label>
+              <Form.Control onChange={handleChange} value={restaurantForm.category} name='category' placeholder="Category" />
+            </Form.Group>
+          </Form.Row>
+          {/* <Form.Row>
           <Form.Group as={Col} controlId="formGridPassword" className="col-4 mx-auto">
           <Form.Label className="text-white">Zip Code</Form.Label>
           <Form.Control type="number" placeholder="Zip Code" />
           </Form.Group>
         </Form.Row> */}
 
-        {/* // does your button have a submit type? */}
-        <Button variant="primary" type="submit" className="col-3 mx-auto">
-          Submit
+          {/* // does your button have a submit type? */}
+          <Button variant="primary" type="submit" className="col-6 mx-auto">
+            Submit
   </Button>
         </Card>
       </Form>
