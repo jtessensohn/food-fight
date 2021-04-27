@@ -4,6 +4,10 @@
     border-bottom: 3px solid black;
 }
 
+.temMemberCard {
+    /* border: 0 !important; */
+}
+
 .teamNameTeamPage {
     text-transform: uppercase;
     font-size: 2.5rem;
@@ -21,4 +25,17 @@
 }
 
 .joinButton {
+}
+
+.fightCardBody {
+    border: 2px solid black;
+}
+
+.restaurantCardBody {
+    border: 2px solid black;
+    margin-bottom: .5em;
+}
+
+.restaurantName {
+    margin: 2px;
 }

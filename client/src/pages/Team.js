@@ -111,7 +111,7 @@ export default function Team() {
   return (
     <div>
       <Navigation />
-      <Row className="mt-3">
+      <Row className="mt-3 col-12 mx-auto">
         <Row className="col-6">
           <h1 className="col-12 p-0 my-auto teamNameTeamPage">{teamData.name}</h1>
           <Button className="col-3 mx-auto my-auto joinButton" variant="dark" onClick={handleClick}>Join Team</Button>
@@ -132,23 +132,20 @@ export default function Team() {
       </Row>
 
 
-
-
-
-      <Row>
+      <Row className="mt-3 col-12 mx-auto text-center justify-content-around">
         <DragDropContext onDragEnd={handleOnDragEnd}>
-          <Card className="col-4 mx-auto ">
+          <Card className="col-5">
             <Card.Title>Restaurants</Card.Title>
             <Droppable droppableId="restaurants">
               {(provided) => (
-                <Card.Body {...provided.droppableProps} ref={provided.innerRef}> Drag and Drop restaurants into the fight box to select them.
+                <Card.Body className="restaurantCardBody" {...provided.droppableProps} ref={provided.innerRef}> Drag and Drop restaurants into the fight box to select them.
                 <br />
                 <br />
                   {teamRestaurants.map((restaurant, index) => {
                     return (
                       <Draggable key={restaurant.id} draggableId={restaurant.id.toString()} index={index}>
                         {(provided) => (
-                          <div {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
+                          <div className="restaurantName" {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
                               {restaurant.name}
                           </div>
                         )}
@@ -161,8 +158,7 @@ export default function Team() {
           </Card>
 
 
-
-          <Card className="col-6 m-3 mr-">
+          <Card className="col-5">
             {isClicked === "CLICKED" ? (
               <div>
                 <Card.Title>Winner</Card.Title>
@@ -175,9 +171,10 @@ export default function Team() {
             ) : (
               <>
                 <Card.Title>Fight</Card.Title>
+                <Card.Subtitle className="mb-2 text-muted">Drag restaurants to fight here.</Card.Subtitle>
                 <Droppable droppableId="fight">
                   {(provided) => (
-                    <Card.Body {...provided.droppableProps} ref={provided.innerRef}>
+                    <Card.Body className="fightCardBody restaurantName"{...provided.droppableProps} ref={provided.innerRef}>
                       {fightRestaurants.map((restaurant, index) => {
                         return (
                           <Draggable key={restaurant.id} draggableId={restaurant.id.toString()} index={index}>
@@ -192,9 +189,11 @@ export default function Team() {
                     </Card.Body>
                   )}
                 </Droppable>
-                <Button onClick={initiateFight}>Fight</Button>
-                or
-                <Button>Random and vote between two</Button>
+                <div className="my-2">
+                  <Button onClick={initiateFight}>Fight</Button><br />
+                  or<br />
+                  <Button>Random and vote between two</Button>
+                </div>
             </>
               )}
             </Card>
