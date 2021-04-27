@@ -41,7 +41,7 @@ export default function Navigation() {
                 <Nav>
                 {user ? (
                     <Form inline>
-                        <Nav.Link as={Link} to={`/team/${user.TeamId}`}>MyTeam</Nav.Link>
+                        <Nav.Link as={Link} to={`/team/${user.TeamId}`}>My Team</Nav.Link>
                         <Nav.Link as={Link} to="/restaurants">Restaurants</Nav.Link>
                         <Button className="logoutButton" onClick={logout} disabled={buttonDisabled}>Logout</Button>
                     </Form>

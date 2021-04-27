@@ -78,9 +78,17 @@ export default function Restaurants() {
           {/* // does your button have a submit type? */}
           <Button variant="primary" type="submit" className="col-6 mx-auto">
             Submit
-  </Button>
+          </Button>
         </Card>
       </Form>
+      <Card className="col-6 m-5 p-5 shadow-lg p-3 mb-5 bg-dark rounded mx-auto">
+        <Card.Title className="text-white">What am I looking at?</Card.Title>
+        <Card.Body className="text-white">
+          While we can't all agree on what to eat, we can certainly agree that restaurants exist.
+          The form above will allow you to submit your favorite restaurant to our database,
+          giving it a fighting chance to be what you eat.
+        </Card.Body>
+      </Card>
     </div>
   )
 }
