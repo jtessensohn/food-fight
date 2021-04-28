@@ -2,8 +2,6 @@ import { Button, Card, Row } from "react-bootstrap"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router"
 import { useDispatch } from "react-redux";
-import Navigation from "../components/Navigation";
-import Footer from "../components/Footer";
 import "../css/team.css"
 import { setTeam } from "../redux/actions";
 import Fight from "../components/Fight";
@@ -86,4 +84,6 @@ export default function Team() {
       <Footer />
     </div>
   )
+}
+
 }

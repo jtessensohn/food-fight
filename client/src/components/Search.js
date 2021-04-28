@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { Button } from 'react-bootstrap';
+import { Button, Row } from 'react-bootstrap';
 import { useHistory } from 'react-router';
 import CreatableSelect from 'react-select/creatable';
+import '../css/search.css'
 
 export default function Search() {
     const [ isLoading, setIsLoading ] = useState(false);
@@ -77,9 +78,12 @@ export default function Search() {
       }, [setTeams])
 
     return (
-        <div>
+        <div className="mb-5">
             <form onSubmit={handleSubmit}>
+              <Row className="col-8 justify-content-around mx-auto my-auto">
                 <CreatableSelect
+                    className="search col-9 my-auto"
+                    placeholder="Create Or Pick Your Team"
                     isClearable
                     isDisabled={isLoading}
                     isLoading={isLoading}
@@ -88,7 +92,8 @@ export default function Search() {
                     options={options}
                     value={value}
                 />
-                <Button type="submit">Join</Button>
+                <Button type="submit" className="searchButton col-2" sz="lg">Join</Button>
+              </Row>
             </form>
         </div>
     )
