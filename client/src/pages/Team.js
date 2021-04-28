@@ -66,7 +66,7 @@ export default function Team() {
     getTeamById()
     allUsers()
     getRestaurant()
-  }, [setTeam, setTeamUsers])
+  }, [setTeamUsers])
 
 
   function handleOnDragEnd(result) {
