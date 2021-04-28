@@ -181,9 +181,6 @@ export default function Fight() {
                                     )}
                                 </Droppable>
                                 <Button onClick={initiateFight}>Fight</Button>
-                                {/* or
-                                <Button>Random and vote between two</Button> */}
-
                             </Card>
                             </Col>
                         </DragDropContext>
@@ -192,9 +189,6 @@ export default function Fight() {
                 )
 
             )}
-
-
-
 
         </Container>
     )
