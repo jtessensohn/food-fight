@@ -13,7 +13,6 @@ router.get('/', async function (req, res) {
             model: db.Team,
 
             attributes: ['name', 'id']
-            attributes: ['name', 'id']
 
         }]
     })
