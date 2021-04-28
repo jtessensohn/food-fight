@@ -59,7 +59,6 @@ export default function Team() {
 
   return (
     <div>
-      <Navigation />
       <Row className="mt-3">
         <Row className="col-6">
           <h1 className="col-12 p-0 my-auto teamNameTeamPage">{teamData.name}</h1>
@@ -81,9 +80,7 @@ export default function Team() {
       </Row>
 
       <Fight />
-      <Footer />
     </div>
   )
 }
 
-}
