@@ -15,12 +15,14 @@ module.exports = (sequelize, DataTypes) => {
       Fight.belongsTo(models.User)
       Fight.hasMany(models.Competitor)
       Fight.belongsToMany(models.Restaurant, {through: models.Competitor})
+      Fight.belongsTo(models.Competitor, { foreignKey: "WinnerId", as:'Winner'})
     }
   };
   Fight.init({
     name: DataTypes.STRING,
     UserId: DataTypes.INTEGER,
-    TeamId: DataTypes.INTEGER
+    TeamId: DataTypes.INTEGER,
+    WinnerId: DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'Fight',
