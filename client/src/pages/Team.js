@@ -1,8 +1,7 @@
 import { Button, Card, Row } from "react-bootstrap"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router"
-import { useDispatch } from "react-redux";
-import Navigation from "../components/Navigation";
+import { useDispatch, useSelector } from "react-redux";
 import "../css/team.css"
 import { setTeam } from "../redux/actions";
 import Fight from "../components/Fight";
