@@ -1,7 +1,8 @@
 import { Button, Card, Row } from "react-bootstrap"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router"
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import Navigation from "../components/Navigation";
 import "../css/team.css"
 import { setTeam } from "../redux/actions";
 import Fight from "../components/Fight";
@@ -23,6 +24,7 @@ export default function Team() {
       })
   }
 
+  
   const handleClick = () => {
     console.log('clicked')
     fetch(`/api/v1/users/team`, {
@@ -37,9 +39,9 @@ export default function Team() {
       dispatch(setTeam(+id))
       allUsers()
     })
-
   }
 
+  
   const allUsers = (teamId) => {
     console.log('all users are belong to us')
     fetch('/api/v1/users')
@@ -51,11 +53,13 @@ export default function Team() {
       })
   }
 
+  
   useEffect(() => {
     getTeamById(id)
     allUsers(id)
   }, [id])
 
+  
   return (
     <div>
       <Row className="mt-3">
