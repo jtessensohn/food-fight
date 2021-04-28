@@ -38,6 +38,9 @@ router.post('/', checkAuth, async (req, res) => {
 // findAll getOrderBy Date descending createdAt limit 1
 router.get('/current', async (req, res) => {
     const fight = await db.Fight.findAll({
+        where: {
+            TeamId: req.session.user.TeamId
+        },
         order: [['createdAt', 'DESC']],
         limit: 1,
         include: [
