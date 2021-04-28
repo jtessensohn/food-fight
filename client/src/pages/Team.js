@@ -61,7 +61,7 @@ export default function Team() {
   
   return (
     <div>
-      <Row className="mt-3">
+      <Row className="mt-3 col-12">
         <Row className="col-6">
           <h1 className="col-12 p-0 my-auto teamNameTeamPage">{teamData.name}</h1>
           <Button className="col-3 mx-auto my-auto joinButton" variant="dark" onClick={handleClick}>Join Team</Button>
@@ -84,4 +84,3 @@ export default function Team() {
     </div>
   )
 }
-
