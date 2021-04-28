@@ -20,3 +20,11 @@
     /* border-bottom: 1px solid black; */
     box-shadow: 0px 0px 3px 0px;
 }
+
+.nameLogoLink {
+    margin-left: 1em;
+}
+
+.navbarForm {
+    margin-right: 1em;
+}
