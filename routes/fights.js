@@ -131,6 +131,8 @@ router.get('/current/winner', async (req, res) => {
 })
 //need to winner column to fight table(connection to restaurant )
 // getAll competitors for a fight, pick 1.
+router.get('/competitors')
+
 // vote for competitor
 // find competitor and increase vote by 1.
 

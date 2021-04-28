@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export default function Fights() {
+export default function NewFightForm(props) {
     const [fightName, setFightName] = useState({
         name: ''
     })
@@ -19,6 +19,7 @@ export default function Fights() {
             .then(res => res.json())
             .then(data => {
                 setFightName(data)
+                props.onFightCreated()
             })
     }
 
