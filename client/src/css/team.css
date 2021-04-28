@@ -1,11 +1,11 @@
+.teamMemberCard {
+    border-radius: 25px;
+}
+
 .teamMemberCardTitle {
     text-transform: uppercase !important;
     font-size: 2.5rem;
     border-bottom: 3px solid black;
-}
-
-.teamMemberCard {
-    border-radius: 25px;
 }
 
 .teamNameTeamPage {

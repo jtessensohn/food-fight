@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd'
 import { Card, Button, Row, Col, Container } from 'react-bootstrap'
 import NewFightForm from './NewFightForm'
+import '../css/fight.css'
 
 export default function Fight() {
     const [teamRestaurants, setTeamRestaurants] = useState([])
@@ -79,7 +80,7 @@ export default function Fight() {
             getCurrentFight()
             return;
         }
-      
+    
     }
 
 
@@ -101,8 +102,8 @@ export default function Fight() {
             {!fight ? (
                 <Row>
                     <Col>
-                        <h2>Create a new fight!</h2>
-                        <Card>
+                        <Card className="fightPageCardBody px-3 newFightCardBody">
+                            <Card.Title className="fightPageCardTitle">Create a new fight!</Card.Title>
                             <NewFightForm onFightCreated={getCurrentFight} />
                         </Card>
                     </Col>
@@ -113,13 +114,15 @@ export default function Fight() {
                     <Row>
                         <Col>
                             <h2>{fight.name}</h2>
-                            <Card>
-                                <Card.Title>Winner</Card.Title>
-                                <Card.Body>{fight.Winner.Restaurant.name}
-                                    <br></br>
-                                    <br></br>
-                                    <Button onClick={resetButton}>New Fight</Button>
+                            <Card className="fightPageCardBody fightPageWinnerCard">
+                                <Card.Title className="fightPageCardTitle">
+                                    <div className="winnerWord">
+                                        Winner
+                                    </div>
+                                </Card.Title>
+                                <Card.Body className="winnerCardBody">{fight.Winner.Restaurant.name}
                                 </Card.Body>
+                                <Button className="fightPageButton col-4 mx-auto" onClick={resetButton}>New Fight</Button>
                             </Card>
                         </Col>
                     </Row>
@@ -131,14 +134,14 @@ export default function Fight() {
                         <h2>{fight.name}</h2>
                         </Col>
                         </Row>
-                        <Row>
+                        <Row className="mb-5">
                         <DragDropContext onDragEnd={handleOnDragEnd}>
                             <Col sm={6}>
-                            <Card>
-                                <Card.Title>Restaurants</Card.Title>
+                            <Card className="fightPageCard">
+                                <Card.Title className="fightPageCardTitle">Restaurants</Card.Title>
                                 <Droppable droppableId="restaurants">
                                     {(provided) => (
-                                        <Card.Body {...provided.droppableProps} ref={provided.innerRef}> Drag and Drop restaurants into the fight box to select them.
+                                        <Card.Body className="fightPageCardBody" {...provided.droppableProps} ref={provided.innerRef}> Drag and Drop restaurants into the fight box to select them.
                                             <br />
                                             <br />
                                             {teamRestaurants.map((restaurant, index) => {
@@ -160,11 +163,11 @@ export default function Fight() {
                             </Card>
                             </Col>
                             <Col sm={6}>
-                            <Card >
+                            <Card className="fightPageCard">
 
                                 <Droppable droppableId="fight">
                                     {(provided) => (
-                                        <Card.Body {...provided.droppableProps} ref={provided.innerRef}>
+                                        <Card.Body className="fightPageCardBody" {...provided.droppableProps} ref={provided.innerRef}>
                                             {fightRestaurants.map((restaurant, index) => {
                                                 return (
                                                     <Draggable key={restaurant.id} draggableId={restaurant.id.toString()} index={index}>
@@ -180,7 +183,7 @@ export default function Fight() {
                                         </Card.Body>
                                     )}
                                 </Droppable>
-                                <Button onClick={initiateFight}>Fight</Button>
+                                <Button className="fightPageButton" onClick={initiateFight}>Fight</Button>
                                 {/* or
                                 <Button>Random and vote between two</Button> */}
 
