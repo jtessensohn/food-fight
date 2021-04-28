@@ -188,6 +188,7 @@ export default function Fight() {
 
                             </Card>
                             </Col>
+                        </DragDropContext>
                         </Row>
                         <Row>
                             <DragDropContext onDragEnd={handleOnDragEnd}>
