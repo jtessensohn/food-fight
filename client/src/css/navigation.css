@@ -1,6 +1,7 @@
 .logoutButton {
     background-color: red;
     border: 0;
+    color: black;
 }
 
 .logoutButton:hover {
@@ -13,4 +14,9 @@
 
 .logoutButton:visited {
     background-color: red;
+}
+
+.navbarContainer {
+    /* border-bottom: 1px solid black; */
+    box-shadow: 0px 0px 3px 0px;
 }

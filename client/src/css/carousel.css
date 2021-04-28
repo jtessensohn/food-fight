@@ -6,7 +6,7 @@
     object-fit: fill;
     height: 300px; */
     border-radius: 25px;
-    box-shadow: 0px 0px 10px 10px;
+    box-shadow: 0px 0px 10px 5px;
     margin-top: 5%;
     margin-bottom: 5%;
 }

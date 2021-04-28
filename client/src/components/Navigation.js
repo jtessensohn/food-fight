@@ -10,7 +10,6 @@ export default function Navigation() {
     const user = useSelector((state) => state.user);
     const dispatch = useDispatch();
     const history = useHistory();
-    const [ buttonDisabled, setButtonDisabled ] = useState(false);
     const [ currentUser, setCurrentUser ] = useState([]);
 
     const logout = () => {
@@ -18,7 +17,6 @@ export default function Navigation() {
             .then(res => res.json())
             .then(data => {
                 if (data.success) {
-                    setButtonDisabled(true)
                     alert(data.success) 
                     dispatch(setUser(null))
                     history.push('/')
@@ -35,15 +33,15 @@ export default function Navigation() {
     }, [])
 
     return (
-        <div>
-            <Navbar bg="dark" variant="dark" className="d-flex justify-content-between">
+        <div className="navbarContainer">
+            <Navbar bg="" variant="light" className="d-flex justify-content-between">
                 <Navbar.Brand as={Link} to="/">Food Fight</Navbar.Brand>
                 <Nav>
                 {user ? (
                     <Form inline>
-                        <Nav.Link as={Link} to={`/team/${user.TeamId}`}>MyTeam</Nav.Link>
+                        <Nav.Link as={Link} to={`/team/${user.TeamId}`}>My Team</Nav.Link>
                         <Nav.Link as={Link} to="/restaurants">Restaurants</Nav.Link>
-                        <Button className="logoutButton" onClick={logout} disabled={buttonDisabled}>Logout</Button>
+                        <Button className="logoutButton" onClick={logout}>Logout</Button>
                     </Form>
                 ) : (
                     <>

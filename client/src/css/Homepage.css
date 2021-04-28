@@ -9,8 +9,8 @@ width: auto;
     }
 
 .registerloginButton:hover{
-background-color:  rgb(230, 22, 36);
-border: black;
+    background-color:  rgb(230, 22, 36);
+    border: black;
 }
 
 .firstRow {
@@ -37,5 +37,5 @@ border: black;
     border-radius: 25px;
     margin-top: 5%;
     margin-bottom: 5%;
-    box-shadow: 0px 0px 10px 10px;
+    box-shadow: 0px 0px 10px 5px;
 }
