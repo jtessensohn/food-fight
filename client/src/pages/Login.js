@@ -72,7 +72,7 @@ export default function Login() {
 
                                     <button className="btn btn-lg button btn-block mb-3 text-uppercase" type="submit">Sign In</button>
                                 </form>
-                                <div class="card-footer small ">
+                                <div className="card-footer small ">
                                     New to the fight? Keep your head down and
                                     <Link className="d-block text-center mt-2 " to="/register">Register</Link>
                                 </div>

@@ -23,15 +23,15 @@ export default function Navigation() {
                     history.push('/')
                 }
             })
-    }
-
-    useEffect(() => {
-        fetch('/api/v1/users/current')
+        }
+        
+        useEffect(() => {
+            fetch('/api/v1/users/current')
             .then(res => res.json())
             .then(data => {
                 setCurrentUser(data)
             })
-    }, [])
+    }, [user, history])
 
     return (
         <div className="navbarContainer">
@@ -40,8 +40,9 @@ export default function Navigation() {
                 <Link to="/" className="nameLogoLink"><img src={nameLogo} alt="Logo Name"/></Link>
                 <Nav>
                 {user ? (
+
                     <Form className="navbarForm" inline>
-                        <Nav.Link as={Link} to={`/team/${user.TeamId}`}>My Team</Nav.Link>
+                        <Nav.Link as={Link} to={`/team/${currentUser.TeamId}`}>My Team</Nav.Link>
                         <Nav.Link as={Link} to="/restaurants">Restaurants</Nav.Link>
                         <Button className="logoutButton" onClick={logout}>Logout</Button>
                     </Form>

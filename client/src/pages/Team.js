@@ -61,7 +61,7 @@ export default function Team() {
   
   return (
     <div>
-      <Row className="mt-3">
+      <Row className="mt-3 col-12">
         <Row className="col-6">
           <h1 className="col-12 p-0 my-auto teamNameTeamPage">{teamData.name}</h1>
           {user.TeamId !== teamData.id && (
@@ -88,4 +88,3 @@ export default function Team() {
     </div>
   )
 }
-
