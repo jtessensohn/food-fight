@@ -4,7 +4,6 @@ import { useParams } from "react-router"
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 import { useDispatch } from "react-redux";
 import Navigation from "../components/Navigation";
-import Footer from "../components/Footer";
 import "../css/team.css"
 import { setTeam } from "../redux/actions";
 
@@ -132,14 +131,14 @@ export default function Team() {
       </Row>
 
 
-      <Row className="mt-3 col-12 mx-auto text-center justify-content-around">
+      <Row className="mt-3 col-12 mx-auto text-center justify-content-around mb-5">
         <DragDropContext onDragEnd={handleOnDragEnd}>
-          <Card className="col-5">
-            <Card.Title>Restaurants</Card.Title>
-            <Card.Subtitle className="mb-2 text-muted">Drag and Drop restaurants into the fight box to select them.</Card.Subtitle>
+          <Card className="col-5 teamPageCard">
+            <Card.Title className="teamPageCardTitle">Restaurants</Card.Title>
+            <Card.Subtitle className="mb-2 teamPageCardSubtitle">Drag and Drop restaurants into the fight box to select them.</Card.Subtitle>
             <Droppable droppableId="restaurants">
               {(provided) => (
-                <Card.Body className="restaurantCardBody" {...provided.droppableProps} ref={provided.innerRef}> 
+                <Card.Body className="teamPageCardBody" {...provided.droppableProps} ref={provided.innerRef}> 
                   {teamRestaurants.map((restaurant, index) => {
                     return (
                       <Draggable key={restaurant.id} draggableId={restaurant.id.toString()} index={index}>
@@ -157,11 +156,11 @@ export default function Team() {
           </Card>
 
 
-          <Card className="col-5">
+          <Card className="col-5 teamPageCard">
             {isClicked === "CLICKED" ? (
               <div>
-                <Card.Title>Winner</Card.Title>
-                <Card.Body>{winningRestaurant.name}
+                <Card.Title className="teamPageWinnerTitle">Winner</Card.Title>
+                <Card.Body className="teamPageCardBody">{winningRestaurant.name}
                 <br></br>
                 <br></br>
                 <Button onClick={resetButton}>Reset</Button>
@@ -169,11 +168,11 @@ export default function Team() {
               </div>
             ) : (
               <>
-                <Card.Title>Fight</Card.Title>
-                <Card.Subtitle className="mb-2 text-muted">Drag restaurants to fight here.</Card.Subtitle>
+                <Card.Title className="teamPageCardTitle">Fight</Card.Title>
+                <Card.Subtitle className="mb-2 teamPageCardSubtitle">Drag restaurants to fight here.</Card.Subtitle>
                 <Droppable droppableId="fight">
                   {(provided) => (
-                    <Card.Body className="fightCardBody restaurantName"{...provided.droppableProps} ref={provided.innerRef}>
+                    <Card.Body className="teamPageCardBody restaurantName"{...provided.droppableProps} ref={provided.innerRef}>
                       {fightRestaurants.map((restaurant, index) => {
                         return (
                           <Draggable key={restaurant.id} draggableId={restaurant.id.toString()} index={index}>

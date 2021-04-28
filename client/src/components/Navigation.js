@@ -5,6 +5,7 @@ import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import { setUser } from '../redux/actions';
 import '../css/navigation.css'
+import nameLogo from "../images/nameLogo.png"
 
 export default function Navigation() {
     const user = useSelector((state) => state.user);
@@ -37,10 +38,11 @@ export default function Navigation() {
     return (
         <div className="navbarContainer">
             <Navbar bg="" variant="light" className="d-flex justify-content-between">
-                <Navbar.Brand as={Link} to="/">Food Fight</Navbar.Brand>
+                {/* <Navbar.Brand as={Link} to="/">Food Fight</Navbar.Brand> */}
+                <Link to="/" className="nameLogoLink"><img src={nameLogo} alt="Logo Name"/></Link>
                 <Nav>
                 {user ? (
-                    <Form inline>
+                    <Form className="navbarForm" inline>
                         <Nav.Link as={Link} to={`/team/${user.TeamId}`}>My Team</Nav.Link>
                         <Nav.Link as={Link} to="/restaurants">Restaurants</Nav.Link>
                         <Button className="logoutButton" onClick={logout} disabled={buttonDisabled}>Logout</Button>
