@@ -89,8 +89,10 @@ export default function Search() {
                     isLoading={isLoading}
                     onChange={handleChange}
                     onCreateOption={handleCreate}
+                    formatCreateLabel = {(value) => `Create team "${value}"`}
                     options={options}
                     value={value}
+                    menuPlacement='top'
                 />
                 <Button type="submit" className="searchButton col-2" sz="lg">Join</Button>
               </Row>

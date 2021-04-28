@@ -1,9 +1,7 @@
 import React from 'react'
 import { Form, Col, Button, Card } from 'react-bootstrap'
 import { useState } from 'react';
-import Navigation from '../components/Navigation';
 import '../css/restaurant.css'
-import Footer from '../components/Footer';
 
 
 export default function Restaurants() {
@@ -53,7 +51,6 @@ export default function Restaurants() {
   }
   return (
     <div>
-      <Navigation />
       {/* // attach handle submit to form */}
       <Form onSubmit={handleSubmit} className="">
         <Card className="restaurantCard col-10 m-5 p-5 p-3 mb-5 bg-dark mx-auto">
