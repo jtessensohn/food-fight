@@ -127,7 +127,6 @@ export default function Fight() {
                 ) : (
                     /* else show active fight. */
                     <>
-
                     <Row>
                         <Col>
                             <h2>{fight.name}</h2>
@@ -189,60 +188,6 @@ export default function Fight() {
                             </Card>
                             </Col>
                         </DragDropContext>
-                        </Row>
-                        <Row>
-                            <DragDropContext onDragEnd={handleOnDragEnd}>
-                                <Col sm={6}>
-                                    <Card>
-                                        <Card.Title>Restaurants</Card.Title>
-                                        <Droppable droppableId="restaurants">
-                                            {(provided) => (
-                                                <Card.Body {...provided.droppableProps} ref={provided.innerRef}> Drag and Drop restaurants into the fight box to select them.
-                                                    <br />
-                                                    <br />
-                                                    {teamRestaurants.map((restaurant, index) => {
-                                                        return (
-                                                            <Draggable key={restaurant.id} draggableId={restaurant.id.toString()} index={index}>
-                                                                {(provided) => (
-                                                                    <div {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
-                                                                        {restaurant.name}
-                                                                    </div>
-                                                                )}
-                                                            </Draggable>
-                                                        )
-                                                    })}
-                                                    {provided.placeholder}
-                                                </Card.Body>
-
-                                            )}
-                                        </Droppable>
-                                    </Card>
-                                </Col>
-                                <Col sm={6}>
-                                    <Card >
-
-                                        <Droppable droppableId="fight">
-                                            {(provided) => (
-                                                <Card.Body {...provided.droppableProps} ref={provided.innerRef}>
-                                                    {fightRestaurants.map((restaurant, index) => {
-                                                        return (
-                                                            <Draggable key={restaurant.id} draggableId={restaurant.id.toString()} index={index}>
-                                                                {(provided) => (
-                                                                    <div {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
-                                                                        {restaurant.name}
-                                                                    </div>
-                                                                )}
-                                                            </Draggable>
-                                                        )
-                                                    })}
-                                                    {provided.placeholder}
-                                                </Card.Body>
-                                            )}
-                                        </Droppable>
-                                        <Button onClick={initiateFight}>Fight</Button>
-                                    </Card>
-                                </Col>
-                            </DragDropContext>
                         </Row>
                     </>
                 )
