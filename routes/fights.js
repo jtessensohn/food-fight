@@ -25,7 +25,9 @@ router.post('/', checkAuth, async (req, res) => {
     }
 
     const fight = await db.Fight.create({
-        name: req.body.name
+        name: req.body.name,
+        TeamId: req.session.user.TeamId,
+        UserId: req.session.user.id
     })
 
     res.status(201).json(fight);
@@ -36,17 +38,21 @@ router.post('/', checkAuth, async (req, res) => {
 // findAll getOrderBy Date descending createdAt limit 1
 router.get('/current', async (req, res) => {
     const fight = await db.Fight.findAll({
+        where: {
+            TeamId: req.session.user.TeamId
+        },
         order: [['createdAt', 'DESC']],
         limit: 1,
         include: [
             db.Competitor,
-             db.Restaurant,
-              {model:db.Competitor,as:"Winner",include:db.Restaurant}
+            db.Restaurant,
+            {model:db.Competitor,as:"Winner",include:db.Restaurant}
         
         ]
 
     })
     res.send(fight[0])
+    res.status(201).json(fight[0])
 })
 
 //2. add competitor to new fight
@@ -131,8 +137,6 @@ router.get('/current/winner', async (req, res) => {
 })
 //need to winner column to fight table(connection to restaurant )
 // getAll competitors for a fight, pick 1.
-router.get('/competitors')
-
 // vote for competitor
 // find competitor and increase vote by 1.
 

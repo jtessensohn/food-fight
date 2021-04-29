@@ -3,14 +3,11 @@ import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd'
 import { Card, Button, Row, Col, Container } from 'react-bootstrap'
 import NewFightForm from './NewFightForm'
 import '../css/fight.css'
-
 export default function Fight() {
     const [teamRestaurants, setTeamRestaurants] = useState([])
     const [fight, setFight] = useState(null)
     const [fightRestaurants, setFightRestaurants] = useState([])
-
     const getCurrentFight = () => {
-
         fetch('/api/v1/fights/current')
             .then(res => res.json())
             .then(data => {
@@ -36,7 +33,6 @@ export default function Fight() {
     const resetButton = (e) => {
         setFight(null)
     }
-
     async function handleOnDragEnd(result) {
         if (!result.destination) return;
         const state = {
@@ -47,7 +43,6 @@ export default function Fight() {
         const destination = result.destination.droppableId
         const [reorderedItem] = state[source].splice(result.source.index, 1)
         state[destination].splice(result.destination.index, 0, reorderedItem)
-
         setTeamRestaurants(state.restaurants)
         setFightRestaurants(state.fight)
         try {
@@ -81,7 +76,6 @@ export default function Fight() {
             return;
         }
     }
-
     const initiateFight = (e) => {
         fetch('/api/v1/fights/current/winner')
             .then(res => res.json())
@@ -89,11 +83,9 @@ export default function Fight() {
                 getCurrentFight()
             })
     }
-
     useEffect(() => {
         getCurrentFight()
     }, [])
-
     return (
         <Container className="mt-5">
             {/* If there is no fight, display new fight form*/}
@@ -127,7 +119,6 @@ export default function Fight() {
                 ) : (
                     /* else show active fight. */
                     <>
-
                         <Row>
                             <Col>
                                 <h2>{fight.name}</h2>
@@ -156,14 +147,12 @@ export default function Fight() {
                                                     })}
                                                     {provided.placeholder}
                                                 </Card.Body>
-
                                             )}
                                         </Droppable>
                                     </Card>
                                 </Col>
                                 <Col sm={6}>
                                     <Card className="fightPageCard">
-
                                         <Droppable droppableId="fight">
                                             {(provided) => (
                                                 <Card.Body className="fightPageCardBody" {...provided.droppableProps} ref={provided.innerRef}>
@@ -185,7 +174,6 @@ export default function Fight() {
                                         <Button className="fightPageButton" onClick={initiateFight}>Fight</Button>
                                         {/* or
                                 <Button>Random and vote between two</Button> */}
-
                                     </Card>
                                 </Col>
                             </DragDropContext>
@@ -193,7 +181,6 @@ export default function Fight() {
                     </>
                 )
             )}
-
         </Container>
     )
 }
