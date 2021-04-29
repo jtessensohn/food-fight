@@ -11,7 +11,8 @@ export default function Team() {
   const [teamUsers, setTeamUsers] = useState([])
   const { id } = useParams()
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user)
+  const user = useSelector((state) => state.user);
+  const theme = useSelector((state) => state.theme);
 
   const getTeamById = (teamId) => {
     fetch(`/api/v1/teams/${teamId}`, {
@@ -63,7 +64,7 @@ export default function Team() {
     <div>
       <Row className="mt-3 col-12">
         <Row className="col-6">
-          <h1 className="col-12 p-0 my-auto teamNameTeamPage">{teamData.name}</h1>
+          <h1 className={`col-12 p-0 my-auto teamNameTeamPage ${theme === "light" ? "text-dark" : "text-light"}`}>{teamData.name}</h1>
           {user.TeamId !== teamData.id && (
             <Button className="col-3 mx-auto my-auto joinButton" variant="dark" onClick={handleClick}>Join Team</Button>
           )}

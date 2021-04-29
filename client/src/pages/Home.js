@@ -46,7 +46,7 @@ export default function Home() {
                 <div className="col-6 mx-auto my-auto">
                     {user ? (
                         <div className="col-12">
-                            <Carousel className="carouselContainer">
+                            <Carousel className={`carouselContainer ${theme === "light" ? "text-dark" : "text-light"}`}>
                                 <Carousel.Item >
                                     <img
                                         className="mx-auto carouselImg"
