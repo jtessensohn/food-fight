@@ -9,6 +9,7 @@
     "db:reset": "sequelize-cli db:drop; sequelize db:create && sequelize db:migrate && sequelize db:seed:all"
   },
   "dependencies": {
+    "@react-google-maps/api": "^2.1.1",
     "bcrypt": "^5.0.1",
     "connect-session-sequelize": "^7.1.1",
     "cookie-parser": "~1.4.4",
