@@ -1,6 +1,6 @@
 .fightPageCardBody {
     margin: 5% 15% 5% 15%;
-    background: gray;
+    background: rgb(255, 255, 255);
     border-radius: 25px;
     box-shadow: 0px 0px 10px 5px;
 }
@@ -83,6 +83,20 @@
 
 .newFightCardBody {
     background-image: url('../images/newFightForm.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+.waitingRestaurantsCard {
+    background-image: url('../images/teamPageWaiting.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+.fightersArena {
+    background-image: url('../images/fightersArena.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
