@@ -3,6 +3,7 @@ import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd'
 import { Card, Button, Row, Col, Container } from 'react-bootstrap'
 import NewFightForm from './NewFightForm'
 import '../css/fight.css'
+import Map from './Map'
 export default function Fight() {
     const [teamRestaurants, setTeamRestaurants] = useState([])
     const [fight, setFight] = useState(null)
@@ -112,6 +113,10 @@ export default function Fight() {
                                 </Card.Title>
                                 <Card.Body className="winnerCardBody">{fight.Winner.Restaurant.name}
                                 </Card.Body>
+                                {/* Map component starts here */}
+                                <Card className="innerRestaurantCard col-10 m-5 p-5  p-3 mb-5 bg-dark  mx-auto">
+                                    <Map fightName={fight.name} />
+                                </Card>
                                 <Button className="fightPageButton col-4 mx-auto" onClick={resetButton}>New Fight</Button>
                             </Card>
                         </Col>
