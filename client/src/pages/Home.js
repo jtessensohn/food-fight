@@ -9,6 +9,7 @@ import carousel2 from '../images/carousel2.png'
 import carousel3 from '../images/carousel3.png'
 import '../css/carousel.css'
 import Search from '../components/Search';
+// import Footer from '../components/Footer';
 
 export default function Home() {
     const user = useSelector((state) => state.user);
@@ -16,7 +17,7 @@ export default function Home() {
 
     return (
         <div>
-            <Row className="firstRow">
+            <Row className="firstRow homePageCardBody">
                 <div className="col-6 my-auto mx-auto">
                     <Card className={`homePageCard ${theme === "light" ? "bg-light text-dark" : "bg-dark text-light"}`}>
                         <Card.Body>
@@ -41,11 +42,11 @@ export default function Home() {
                 </div>
             </Row>
 
-            <Row className="secondRow">
+            <Row className="secondRow homePageCardBody">
                 <div className="col-6 mx-auto my-auto">
                     {user ? (
                         <div className="col-12">
-                            <Carousel className="carouselContainer">
+                            <Carousel className={`carouselContainer ${theme === "light" ? "text-dark" : "text-light"}`}>
                                 <Carousel.Item >
                                     <img
                                         className="mx-auto carouselImg"

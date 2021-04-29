@@ -1,9 +1,8 @@
-.footer {
-    position: bottom;
+/* .footer {
+    position: fixed;
     bottom: 0;
-    width: 100%;
+    width: 110%;
     margin-top: 4rem;
-    height: 4em;
+    height: 60px;
     background-color: rgb(52, 58, 64);
-    
-}
+} */

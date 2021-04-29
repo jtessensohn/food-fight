@@ -54,10 +54,10 @@ export default function Restaurants() {
     <div>
       {/* // attach handle submit to form */}
       <Form onSubmit={handleSubmit} className="">
-        <Card className="restaurantCard col-10 m-5 p-5 p-3 mb-5 bg-dark mx-auto">
+        <Card className="restaurantCard col-10 p-5 p-3 pb-5 bg-dark mx-auto">
           {/* <Card.Img url="../images/restaurant.jpg" alt="Card image" />
           <Card.ImgOverlay> */}
-          <Card className="innerRestaurantCard col-10 p-5 mx-auto my-auto">
+          <Card className="innerRestaurantCard col-10 p-5 mx-auto">
             <Form.Row>
               <Form.Group as={Col} controlId="formGridEmail" className="col-12 mx-auto">
                 <Form.Label className="">Restaurant Name</Form.Label>
@@ -86,7 +86,7 @@ export default function Restaurants() {
           {/* </Card.ImgOverlay> */}
         </Card>
       </Form>
-      <Card className="innerRestaurantCard col-10 m-5 p-5  p-3 mb-5 bg-dark  mx-auto">
+      <Card className="innerRestaurantCard col-10 p-5 bg-dark mx-auto">
         <Card.Title className="text-white">What am I looking at?</Card.Title>
         <Card.Body className="text-white">
           While we can't all agree on what to eat, we can certainly agree that restaurants exist.
@@ -97,6 +97,7 @@ export default function Restaurants() {
       <Card className="innerRestaurantCard col-10 m-5 p-5  p-3 mb-5 bg-dark  mx-auto">
         <Map />
       </Card>
+      <br />
     </div>
   )
 }

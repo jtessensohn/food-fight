@@ -12,7 +12,8 @@ export default function Team() {
   const [teamUsers, setTeamUsers] = useState([])
   const { id } = useParams()
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user)
+  const user = useSelector((state) => state.user);
+  const theme = useSelector((state) => state.theme);
 
   const getTeamById = (teamId) => {
     fetch(`/api/v1/teams/${teamId}`, {
@@ -92,7 +93,6 @@ export default function Team() {
           </div>
         )
       }
-
     </>
   )
 }
