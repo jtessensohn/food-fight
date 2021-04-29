@@ -10,16 +10,15 @@ import carousel3 from '../images/carousel3.png'
 import '../css/carousel.css'
 import Search from '../components/Search';
 
-
-
 export default function Home() {
     const user = useSelector((state) => state.user);
+    const theme = useSelector((state) => state.theme);
 
     return (
         <div>
             <Row className="firstRow">
                 <div className="col-6 my-auto mx-auto">
-                    <Card className="homePageCard">
+                    <Card className={`homePageCard ${theme === "light" ? "bg-light text-dark" : "bg-dark text-light"}`}>
                         <Card.Body>
                             <Card.Title>Welcome to Food Fight!</Card.Title>
                             <Card.Text>
@@ -98,7 +97,7 @@ export default function Home() {
 
 
                 <div className="col-6 my-auto mx-auto">
-                    <Card className="homePageCard">
+                    <Card className={`homePageCard ${theme === "light" ? "bg-light text-dark" : "bg-dark text-light"}`}>
                         <Card.Body>
                             <Card.Title>How to let your food fight for you!</Card.Title>
                             <Card.Text>

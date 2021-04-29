@@ -3,8 +3,9 @@ import { Button, Form, Nav, Navbar } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
-import { setUser } from '../redux/actions';
+import { setUser, toggleTheme } from '../redux/actions';
 import '../css/navigation.css'
+import DarkModeToggle from 'react-dark-mode-toggle';
 import nameLogo from "../images/nameLogo.png"
 
 export default function Navigation() {
@@ -12,6 +13,7 @@ export default function Navigation() {
     const dispatch = useDispatch();
     const history = useHistory();
     const [ currentUser, setCurrentUser ] = useState([]);
+    const [ isDarkMode, setIsDarkMode ] = useState(() => false);
 
     const logout = () => {
         fetch('/api/v1/users/logout')
@@ -23,10 +25,15 @@ export default function Navigation() {
                     history.push('/')
                 }
             })
-        }
-        
-        useEffect(() => {
-            fetch('/api/v1/users/current')
+    }
+
+    const handleThemeSwitch = () => {
+        dispatch(toggleTheme())
+        setIsDarkMode(true)
+    }
+
+    useEffect(() => {
+        fetch('/api/v1/users/current')
             .then(res => res.json())
             .then(data => {
                 setCurrentUser(data)
@@ -34,10 +41,11 @@ export default function Navigation() {
     }, [user, history])
 
     return (
-        <div className="navbarContainer">
-            <Navbar bg="" variant="light" className="d-flex justify-content-between">
-                {/* <Navbar.Brand as={Link} to="/">Food Fight</Navbar.Brand> */}
-                <Link to="/" className="nameLogoLink"><img src={nameLogo} alt="Logo Name"/></Link>
+        <div className="header navbarContainer">
+            <Navbar bg="dark" variant="dark" className="d-flex justify-content-between">
+                <Navbar.Brand as={Link} to="/" className="nameLogoLink"><img src={nameLogo} alt="Logo"></img></Navbar.Brand>
+                {/* <Button onClick={handleThemeSwitch}>Theme Switch</Button> */}
+                <DarkModeToggle onChange={(setIsDarkMode, handleThemeSwitch)} checked={isDarkMode} size={80} />
                 <Nav>
                 {user ? (
 

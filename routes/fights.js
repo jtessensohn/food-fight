@@ -25,7 +25,9 @@ router.post('/', checkAuth, async (req, res) => {
     }
 
     const fight = await db.Fight.create({
-        name: req.body.name
+        name: req.body.name,
+        TeamId: req.session.user.TeamId,
+        UserId: req.session.user.id
     })
 
     res.status(201).json(fight);
@@ -43,13 +45,14 @@ router.get('/current', async (req, res) => {
         limit: 1,
         include: [
             db.Competitor,
-             db.Restaurant,
-              {model:db.Competitor,as:"Winner",include:db.Restaurant}
+            db.Restaurant,
+            {model:db.Competitor,as:"Winner",include:db.Restaurant}
         
         ]
 
     })
     res.send(fight[0])
+    res.status(201).json(fight[0])
 })
 
 //2. add competitor to new fight
