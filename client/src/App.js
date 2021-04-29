@@ -5,17 +5,16 @@ import Home from './pages/Home';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import Myteam from './pages/Myteam';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { setUser } from './redux/actions';
 import Team from './pages/Team';
 import Restaurants from './pages/Restaurants';
 
-
-
 function App() {
   const dispatch = useDispatch();
   const [ userStatus, setUserStatus ] = useState('LOADING');
+  const theme = useSelector((state) => state.theme);
 
   useEffect(() => {
     fetch('/api/v1/users/current')
@@ -30,7 +29,7 @@ function App() {
   }, [dispatch])
 
   return (
-    <div className="App">
+    <div className={`App ${theme === "dark" ? "dark" : "light"}`}>
       <Router>
     
     { userStatus === 'LOADING' && (

@@ -3,8 +3,9 @@ import { Button, Form, Nav, Navbar } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
-import { setUser } from '../redux/actions';
+import { setUser, toggleTheme } from '../redux/actions';
 import '../css/navigation.css'
+import DarkModeToggle from 'react-dark-mode-toggle';
 
 export default function Navigation() {
     const user = useSelector((state) => state.user);
@@ -12,6 +13,7 @@ export default function Navigation() {
     const history = useHistory();
     const [ buttonDisabled, setButtonDisabled ] = useState(false);
     const [ currentUser, setCurrentUser ] = useState([]);
+    const [ isDarkMode, setIsDarkMode ] = useState(() => false);
 
     const logout = () => {
         fetch('/api/v1/users/logout')
@@ -26,6 +28,11 @@ export default function Navigation() {
             })
     }
 
+    const handleThemeSwitch = () => {
+        dispatch(toggleTheme())
+        setIsDarkMode(true)
+    }
+
     useEffect(() => {
         fetch('/api/v1/users/current')
             .then(res => res.json())
@@ -38,6 +45,8 @@ export default function Navigation() {
         <div className="header">
             <Navbar bg="dark" variant="dark" className="d-flex justify-content-between">
                 <Navbar.Brand as={Link} to="/">Food Fight</Navbar.Brand>
+                {/* <Button onClick={handleThemeSwitch}>Theme Switch</Button> */}
+                <DarkModeToggle onChange={(setIsDarkMode, handleThemeSwitch)} checked={isDarkMode} size={80} />
                 <Nav>
                 {user ? (
                     <Form inline>
