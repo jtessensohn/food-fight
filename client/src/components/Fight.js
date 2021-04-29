@@ -124,10 +124,10 @@ export default function Fight() {
                                 <h2>{fight.name}</h2>
                             </Col>
                         </Row>
-                        <Row className="mb-5">
+                        <Row className="pb-5">
                             <DragDropContext onDragEnd={handleOnDragEnd}>
                                 <Col sm={6}>
-                                    <Card className="fightPageCard">
+                                    <Card className="fightPageCard waitingRestaurantsCard">
                                         <Card.Title className="fightPageCardTitle">Restaurants</Card.Title>
                                         <Droppable droppableId="restaurants">
                                             {(provided) => (
