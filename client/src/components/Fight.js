@@ -3,10 +3,12 @@ import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd'
 import { Card, Button, Row, Col, Container } from 'react-bootstrap'
 import NewFightForm from './NewFightForm'
 import '../css/fight.css'
+import { useSelector } from 'react-redux'
 export default function Fight() {
     const [teamRestaurants, setTeamRestaurants] = useState([])
     const [fight, setFight] = useState(null)
     const [fightRestaurants, setFightRestaurants] = useState([])
+    const theme = useSelector((state) => state.theme);
     const getCurrentFight = () => {
         fetch('/api/v1/fights/current')
             .then(res => res.json())
@@ -92,7 +94,7 @@ export default function Fight() {
             {!fight ? (
                 <Row>
                     <Col>
-                        <Card className="fightPageCardBody px-3 newFightCardBody">
+                        <Card className={`fightPageCardBody px-3 newFightCardBody homePageCardBody ${theme === "light" ? "homePageCardBody" : "homePageCardBodyDark"}`}>
                             <Card.Title className="fightPageCardTitle">Create a new fight!</Card.Title>
                             <NewFightForm onFightCreated={getCurrentFight} />
                         </Card>
