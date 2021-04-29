@@ -9,6 +9,7 @@ import carousel2 from '../images/carousel2.png'
 import carousel3 from '../images/carousel3.png'
 import '../css/carousel.css'
 import Search from '../components/Search';
+// import Footer from '../components/Footer';
 
 export default function Home() {
     const user = useSelector((state) => state.user);
