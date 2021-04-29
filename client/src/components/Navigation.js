@@ -41,15 +41,11 @@ export default function Navigation() {
     }, [user, history])
 
     return (
-        <div className="header">
+        <div className="header navbarContainer">
             <Navbar bg="dark" variant="dark" className="d-flex justify-content-between">
-                <Navbar.Brand as={Link} to="/">Food Fight</Navbar.Brand>
+                <Navbar.Brand as={Link} to="/" className="nameLogoLink"><img src={nameLogo} alt="Logo"></img></Navbar.Brand>
                 {/* <Button onClick={handleThemeSwitch}>Theme Switch</Button> */}
                 <DarkModeToggle onChange={(setIsDarkMode, handleThemeSwitch)} checked={isDarkMode} size={80} />
-//         <div className="navbarContainer">
-//             <Navbar bg="" variant="light" className="d-flex justify-content-between">
-//                 {/* <Navbar.Brand as={Link} to="/">Food Fight</Navbar.Brand> */}
-//                 <Link to="/" className="nameLogoLink"><img src={nameLogo} alt="Logo Name"/></Link>
                 <Nav>
                 {user ? (
 
