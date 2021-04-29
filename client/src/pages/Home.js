@@ -17,7 +17,7 @@ export default function Home() {
 
     return (
         <div>
-            <Row className="firstRow">
+            <Row className="firstRow homePageCardBody">
                 <div className="col-6 my-auto mx-auto">
                     <Card className={`homePageCard ${theme === "light" ? "bg-light text-dark" : "bg-dark text-light"}`}>
                         <Card.Body>
@@ -42,7 +42,7 @@ export default function Home() {
                 </div>
             </Row>
 
-            <Row className="secondRow">
+            <Row className="secondRow homePageCardBody">
                 <div className="col-6 mx-auto my-auto">
                     {user ? (
                         <div className="col-12">

@@ -9,7 +9,6 @@ body {
 
 .App.dark {
   background: #000000;
-  /* background: linear-gradient(to right, #000000, #000000); */
   color: black;
   position: relative;
   min-height: 100vh;

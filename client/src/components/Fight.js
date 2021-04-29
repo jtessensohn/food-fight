@@ -152,7 +152,8 @@ export default function Fight() {
                                     </Card>
                                 </Col>
                                 <Col sm={6}>
-                                    <Card className="fightPageCard">
+                                    <Card className="fightPageCard fightersArena">
+                                        <Card.Title className="fightPageCardTitle">Fighters Arena</Card.Title>
                                         <Droppable droppableId="fight">
                                             {(provided) => (
                                                 <Card.Body className="fightPageCardBody" {...provided.droppableProps} ref={provided.innerRef}>
