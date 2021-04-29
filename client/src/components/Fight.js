@@ -105,14 +105,14 @@ export default function Fight() {
                 fight.Winner ? (
                     <Row>
                         <Col>
-                            <h2>{fight.name}</h2>
-                            <Card className="fightPageCardBody fightPageWinnerCard">
-                                <Card.Title className="fightPageCardTitle">
-                                    <div className="winnerWord">
+                            <h2 className={`${theme === "light" ? "text-dark" : "text-light"}`}>Winner of the battle: {fight.name}</h2>
+                            <Card className={`fightPageCardBody fightPageWinnerCard ${theme === "light" ? "fightPageCard" : "fightPageCardDark"}`}>
+                                {/* <Card.Title className={`fightPageCardTitle ${theme === "light" ? "fightPageCardTitle" : "fightPageCardTitle text-light"}`}>
+                                    <div className={`winnerWord ${theme === "light" ? "winnerWord" : "winnerWordDark"}`}>
                                         Winner
                                     </div>
-                                </Card.Title>
-                                <Card.Body className="winnerCardBody">{fight.Winner.Restaurant.name}
+                                </Card.Title> */}
+                                <Card.Body className="winnerCardBody" style={{textTransform:'uppercase', fontWeight:'bold', fontSize:'15px'}}>{fight.Winner.Restaurant.name}
                                 </Card.Body>
                                 <Button className="fightPageButton col-4 mx-auto" onClick={resetButton}>New Fight</Button>
                             </Card>
@@ -129,11 +129,11 @@ export default function Fight() {
                         <Row className="pb-5">
                             <DragDropContext onDragEnd={handleOnDragEnd}>
                                 <Col sm={6}>
-                                    <Card className="fightPageCard waitingRestaurantsCard">
+                                    <Card className={`fightPageCard waitingRestaurantsCard ${theme === "light" ? "fightPageCard" : "fightPageCardDark"}`}>
                                         <Card.Title className="fightPageCardTitle">Restaurants</Card.Title>
                                         <Droppable droppableId="restaurants">
                                             {(provided) => (
-                                                <Card.Body className="fightPageCardBody" {...provided.droppableProps} ref={provided.innerRef}> Drag and Drop restaurants into the fight box to select them.
+                                                <Card.Body className={`fightPageCardBody ${theme === "light" ? "fightPageCardBody" : "fightPageCardBodyDark bg-dark text-light"}`} {...provided.droppableProps} ref={provided.innerRef}> Drag and Drop restaurants into the fight box to select them.
                                                     <br />
                                                     <br />
                                                     {teamRestaurants.map((restaurant, index) => {
@@ -154,11 +154,11 @@ export default function Fight() {
                                     </Card>
                                 </Col>
                                 <Col sm={6}>
-                                    <Card className="fightPageCard fightersArena">
+                                    <Card className={`fightPageCard fightersArena ${theme === "light" ? "fightPageCard" : "fightPageCardDark"}`}>
                                         <Card.Title className="fightPageCardTitle">Fighters Arena</Card.Title>
                                         <Droppable droppableId="fight">
                                             {(provided) => (
-                                                <Card.Body className="fightPageCardBody" {...provided.droppableProps} ref={provided.innerRef}>
+                                                <Card.Body className={`fightPageCardBody ${theme === "light" ? "fightPageCard" : "bg-dark text-light"}`} {...provided.droppableProps} ref={provided.innerRef}>
                                                     {fightRestaurants.map((restaurant, index) => {
                                                         return (
                                                             <Draggable key={restaurant.id} draggableId={restaurant.id.toString()} index={index}>
