@@ -2,6 +2,7 @@ import React from 'react'
 import { Form, Col, Button, Card } from 'react-bootstrap'
 import { useState } from 'react';
 import '../css/restaurant.css'
+import Map from '../components/Map';
 
 
 export default function Restaurants() {
@@ -92,6 +93,9 @@ export default function Restaurants() {
           The form above will allow you to submit your favorite restaurant to our database,
           giving it a fighting chance to be what you eat.
         </Card.Body>
+      </Card>
+      <Card className="innerRestaurantCard col-10 m-5 p-5  p-3 mb-5 bg-dark  mx-auto">
+        <Map />
       </Card>
     </div>
   )
