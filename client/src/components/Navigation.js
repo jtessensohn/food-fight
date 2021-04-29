@@ -29,7 +29,11 @@ export default function Navigation() {
 
     const handleThemeSwitch = () => {
         dispatch(toggleTheme())
-        setIsDarkMode(true)
+        if (isDarkMode === true) {
+            setIsDarkMode(false)
+        } else {
+            setIsDarkMode(true)
+        }
     }
 
     useEffect(() => {
@@ -45,7 +49,7 @@ export default function Navigation() {
             <Navbar bg="dark" variant="dark" className="d-flex justify-content-between">
                 <Navbar.Brand as={Link} to="/" className="nameLogoLink"><img src={nameLogo} alt="Logo"></img></Navbar.Brand>
                 {/* <Button onClick={handleThemeSwitch}>Theme Switch</Button> */}
-                <DarkModeToggle onChange={(setIsDarkMode, handleThemeSwitch)} checked={isDarkMode} size={80} />
+                <DarkModeToggle onChange={(setIsDarkMode, handleThemeSwitch)} checked={isDarkMode} size={80}/>
                 <Nav>
                 {user ? (
 

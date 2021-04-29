@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Card, ListGroup, Row } from 'react-bootstrap'
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom'
+import Map from '../components/Map';
 
 
 export default function Myteam() {
@@ -43,6 +44,7 @@ export default function Myteam() {
 
             )
         })}
+        <Map />
         </div>
     )
 }

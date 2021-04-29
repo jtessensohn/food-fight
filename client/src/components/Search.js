@@ -78,7 +78,7 @@ export default function Search() {
       }, [setTeams])
 
     return (
-        <div className="mb-5">
+        <div className="pb-5">
             <form onSubmit={handleSubmit}>
               <Row className="col-8 justify-content-around mx-auto my-auto">
                 <CreatableSelect

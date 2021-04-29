@@ -4,14 +4,12 @@ body {
 
 .App {
   text-align: center;
-  background: #000000;
-  background: linear-gradient(to right, #5e5e5e, #afafaf);
+  background: #ffffff;
 }
 
 .App.dark {
   background: #000000;
-  background: linear-gradient(to right, #000000, #555555);
-  color: white;
+  color: black;
   position: relative;
   min-height: 100vh;
 }
