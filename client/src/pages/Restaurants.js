@@ -2,9 +2,12 @@ import React from 'react'
 import { Form, Col, Button, Card } from 'react-bootstrap'
 import { useState } from 'react';
 import '../css/restaurant.css'
+import { useSelector } from 'react-redux';
+
 
 
 export default function Restaurants() {
+  const theme = useSelector((state) => state.theme);
   // make a hook
   const [restaurantForm, setRestaurantForm] = useState({
     name: '',
@@ -52,11 +55,11 @@ export default function Restaurants() {
   return (
     <div>
       {/* // attach handle submit to form */}
-      <Form onSubmit={handleSubmit} className="">
-        <Card className="restaurantCard col-10 p-5 p-3 pb-5 bg-dark mx-auto">
+      <Form onSubmit={handleSubmit}>
+        <Card className={`restaurantCard col-10 p-5 p-3 pb-5 mx-auto ${theme === "light" ? "restaurantCard" : "restaurantCardDark"}`}>
           {/* <Card.Img url="../images/restaurant.jpg" alt="Card image" />
           <Card.ImgOverlay> */}
-          <Card className="innerRestaurantCard col-10 p-5 mx-auto">
+          <Card className={`innerRestaurantCard col-10 p-5 mx-auto ${theme === "light" ? "innerRestaurantCard" : "innerRestaurantCardDark bg-dark text-light"}`}>
             <Form.Row>
               <Form.Group as={Col} controlId="formGridEmail" className="col-12 mx-auto">
                 <Form.Label className="">Restaurant Name</Form.Label>
@@ -85,7 +88,7 @@ export default function Restaurants() {
           {/* </Card.ImgOverlay> */}
         </Card>
       </Form>
-      <Card className="innerRestaurantCard col-10 p-5 bg-dark mx-auto">
+      <Card className={`secondRestaurantCard col-10 p-5 bg-dark mx-auto ${theme === "light" ? "secondRestaurantCard" : "secondRestaurantCardDark"}`}>
         <Card.Title className="text-white">What am I looking at?</Card.Title>
         <Card.Body className="text-white">
           While we can't all agree on what to eat, we can certainly agree that restaurants exist.

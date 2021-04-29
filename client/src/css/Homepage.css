@@ -42,5 +42,10 @@ width: auto;
 
 .homePageCardBody {
     border-radius: 25px;
-    box-shadow: 0px 0px 10px 0px black;
+    box-shadow: 0px 0px 10px 0px rgb(0, 0, 0);
+}
+
+.homePageCardBodyDark {
+    border-radius: 25px;
+    box-shadow: 0px 0px 10px 0px rgb(230, 220, 36);
 }
