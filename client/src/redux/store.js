@@ -1,8 +1,9 @@
 import { combineReducers, createStore } from 'redux';
-import { userReducer } from './reducers';
+import { themeReducer, userReducer } from './reducers';
 
 const rootReducer = combineReducers({
     user: userReducer,
+    theme: themeReducer
 })
 
 const store = createStore(
