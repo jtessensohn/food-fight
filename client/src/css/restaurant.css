@@ -7,7 +7,19 @@
     border-radius: 25px;
     margin-top: 5%;
     margin-bottom: 5%;
-    box-shadow: 0px 0px 10px 5px;
+    box-shadow: 0px 0px 10px 0px;
+}
+
+.restaurantCardDark {
+    background-image: url("../images/resaurant.jpg");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    border: 0;
+    border-radius: 25px;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    box-shadow: 0px 0px 10px 0px rgb(230, 220, 36);
 }
 
 .innerRestaurantCard {
@@ -18,5 +30,38 @@
     border-radius: 25px;
     margin-top: 5%;
     padding-bottom: 5%;
-    box-shadow: 0px 0px 10px 5px;
+    box-shadow: 0px 0px 10px 0px black;
+}
+
+.innerRestaurantCardDark {
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    border: 0;
+    border-radius: 25px;
+    margin-top: 5%;
+    padding-bottom: 5%;
+    box-shadow: 0px 0px 10px 0px white;
+}
+
+.secondRestaurantCard {
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    border: 0;
+    border-radius: 25px;
+    margin-top: 5%;
+    padding-bottom: 5%;
+    box-shadow: 0px 0px 10px 0px;
+}
+
+.secondRestaurantCardDark {
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    border: 0;
+    border-radius: 25px;
+    margin-top: 5%;
+    padding-bottom: 5%;
+    box-shadow: 0px 0px 10px 0px rgb(230, 220, 36);
 }

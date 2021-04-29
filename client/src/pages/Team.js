@@ -68,12 +68,12 @@ export default function Team() {
           <div>
             <Row className="mt-3 col-12">
               <Row className="col-6">
-                <h1 className="col-12 p-0 my-auto teamNameTeamPage">{teamData.name}</h1>
+                <h1 className={`col-12 p-0 my-auto teamNameTeamPage ${theme === "light" ? "text-dark" : "text-light"}`}>{teamData.name}</h1>
                 {user.TeamId !== teamData.id && (
                   <Button className="col-3 mx-auto my-auto joinButton" variant="dark" onClick={handleClick}>Join Team</Button>
                 )}
               </Row>
-              <Card className="col-6 teamMemberCard">
+              <Card className={`col-6 teamMemberCard homePageCardBody ${theme === "light" ? "homePageCardBody" : "homePageCardBodyDark"}`}>
                 <Card.Title className="teamMemberCardTitle pb-0">Team Members</Card.Title>
                 <Card.Body>
                   <div className="memberList">
