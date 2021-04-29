@@ -6,12 +6,12 @@ import { Link } from 'react-router-dom';
 import { setUser, toggleTheme } from '../redux/actions';
 import '../css/navigation.css'
 import DarkModeToggle from 'react-dark-mode-toggle';
+import nameLogo from "../images/nameLogo.png"
 
 export default function Navigation() {
     const user = useSelector((state) => state.user);
     const dispatch = useDispatch();
     const history = useHistory();
-    const [ buttonDisabled, setButtonDisabled ] = useState(false);
     const [ currentUser, setCurrentUser ] = useState([]);
     const [ isDarkMode, setIsDarkMode ] = useState(() => false);
 
@@ -20,7 +20,6 @@ export default function Navigation() {
             .then(res => res.json())
             .then(data => {
                 if (data.success) {
-                    setButtonDisabled(true)
                     alert(data.success) 
                     dispatch(setUser(null))
                     history.push('/')
@@ -39,7 +38,7 @@ export default function Navigation() {
             .then(data => {
                 setCurrentUser(data)
             })
-    }, [])
+    }, [user, history])
 
     return (
         <div className="header">
@@ -47,12 +46,17 @@ export default function Navigation() {
                 <Navbar.Brand as={Link} to="/">Food Fight</Navbar.Brand>
                 {/* <Button onClick={handleThemeSwitch}>Theme Switch</Button> */}
                 <DarkModeToggle onChange={(setIsDarkMode, handleThemeSwitch)} checked={isDarkMode} size={80} />
+//         <div className="navbarContainer">
+//             <Navbar bg="" variant="light" className="d-flex justify-content-between">
+//                 {/* <Navbar.Brand as={Link} to="/">Food Fight</Navbar.Brand> */}
+//                 <Link to="/" className="nameLogoLink"><img src={nameLogo} alt="Logo Name"/></Link>
                 <Nav>
                 {user ? (
-                    <Form inline>
-                        <Nav.Link as={Link} to={`/team/${user.TeamId}`}>MyTeam</Nav.Link>
+
+                    <Form className="navbarForm" inline>
+                        <Nav.Link as={Link} to={`/team/${currentUser.TeamId}`}>My Team</Nav.Link>
                         <Nav.Link as={Link} to="/restaurants">Restaurants</Nav.Link>
-                        <Button className="logoutButton" onClick={logout} disabled={buttonDisabled}>Logout</Button>
+                        <Button className="logoutButton" onClick={logout}>Logout</Button>
                     </Form>
                 ) : (
                     <>

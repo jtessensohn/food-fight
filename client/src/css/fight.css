@@ -1,0 +1,89 @@
+.fightPageCardBody {
+    margin: 5% 15% 5% 15%;
+    background: gray;
+    border-radius: 25px;
+    box-shadow: 0px 0px 10px 5px;
+}
+
+.fightPageCard {
+    border-radius: 25px;
+    /* background-image: url("../images/fightPageRestCard.jpg"); */
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.fightPageCardTitle {
+    font-size: 2rem;
+    margin: 5% auto 3% auto;
+    color: rgb(0, 0, 0);
+    margin-top: 5%;
+    background: rgba(255, 255, 255, 0.4);
+    width: fit-content;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 5px rgba(255, 255, 255, 0.4);
+}
+
+.fightPageCardSubtitle {
+    margin: auto auto 3% auto;
+    color: rgb(0, 0, 0);
+    margin-top: 5%;
+    background: rgba(255, 255, 255, 0.4);
+    width: fit-content;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 5px rgba(255, 255, 255, 0.4);
+}
+
+.fightPageWinnerCard {
+    background-image: url('../images/winner.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+.fightPageWinnerTitle {
+    margin: 5% auto 3% auto;
+    color: rgb(230, 220, 36);
+    margin-top: 5%;
+    background: rgba(255, 255, 255, 0.4);
+    width: fit-content;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 5px rgba(255, 255, 255, 0.4);
+    font-weight: bolder;
+}
+
+.winnerCardBody {
+    margin: auto auto 3% auto;
+    font-weight: bolder;
+    color: rgb(0, 0, 0);
+    margin-top: 5%;
+    background: rgba(255, 255, 255, 0.4);
+    width: fit-content;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 5px rgba(255, 255, 255, 0.4);
+}
+
+.winnerWord {
+    border-bottom: 1px solid black;
+}
+
+.fightPageButton {
+    color: black;
+    border: 0;
+    border-radius: 25px;
+    margin: 3% auto 3% auto;
+    background-color: rgb(230, 22, 36);
+    font-weight: bolder;
+}
+
+.fightPageButton:hover {
+    color: white;
+    background-color: rgb(230, 22, 36);
+}
+
+.newFightCardBody {
+    background-image: url('../images/newFightForm.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}

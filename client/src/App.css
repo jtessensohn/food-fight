@@ -1,3 +1,7 @@
+body {
+  background: #ffffff;
+}
+
 .App {
   text-align: center;
   background: #000000;
@@ -8,6 +12,8 @@
   background: #000000;
   background: linear-gradient(to right, #000000, #555555);
   color: white;
+  position: relative;
+  min-height: 100vh;
 }
 
 .App-logo {

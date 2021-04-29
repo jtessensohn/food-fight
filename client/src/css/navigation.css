@@ -1,6 +1,7 @@
 .logoutButton {
     background-color: red;
     border: 0;
+    color: black;
 }
 
 .logoutButton:hover {
@@ -19,4 +20,17 @@
     position: sticky;
     top: 0;
     z-index: 100;
+}
+
+.navbarContainer {
+    /* border-bottom: 1px solid black; */
+    box-shadow: 0px 0px 3px 0px;
+}
+
+.nameLogoLink {
+    margin-left: 1em;
+}
+
+.navbarForm {
+    margin-right: 1em;
 }
