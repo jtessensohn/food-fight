@@ -75,7 +75,7 @@ export default function Home() {
                     ) : (
 
                         <div className="col-12 my-auto mx-auto">
-                            <Card className="homePageCard">
+                            <Card className={`homePageCard ${theme === "light" ? "bg-light text-dark" : "bg-dark text-light"}`}>
                                 <Card.Body>
                                     <Card.Title>
                                         Lookin' for a fight? Register or log in below:
@@ -112,7 +112,7 @@ export default function Home() {
                 </>
             ) : (
                 <div className="col-0">
-
+                    <br />
                 </div>
             )}
         </div>

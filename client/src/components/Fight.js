@@ -109,9 +109,8 @@ export default function Fight() {
                 /* If fight has winner, display winner and create new fight button */
                 fight.Winner ? (
                     <Row>
-                        <Col>
-                            <Row><h2 className={`col-12 ${theme === "light" ? "text-dark" : "text-light"}`}>Winner of <span className="fightName">{fight.name}</span> is </h2><h3 className="col-6 mx-auto"><span>{fight.Winner.Restaurant.name}</span></h3></Row>
-                            <Card className={`fightPageCardBody fightPageWinnerCard ${theme === "light" ? "fightPageCard" : "fightPageCardDark"}`}>
+                            <Row className="mx-auto"><h2 className={`col-12 mx-auto ${theme === "light" ? "text-dark" : "text-light"}`}>Winner of <span className="fightName">{fight.name}</span> is </h2><h3 className="col-6 mx-auto"><span>{fight.Winner.Restaurant.name}</span></h3></Row>
+                            <Card className={`col-12 mx-auto fightPageCardBody fightPageWinnerCard ${theme === "light" ? "fightPageCard" : "fightPageCardDark"}`}>
                                 {/* <Card.Title className={`fightPageCardTitle ${theme === "light" ? "fightPageCardTitle" : "fightPageCardTitle text-light"}`}>
                                     <div className={`winnerWord ${theme === "light" ? "winnerWord" : "winnerWordDark"}`}>
                                         Winner
@@ -127,7 +126,6 @@ export default function Fight() {
                                 </Card>
                                 <Button className="fightPageButton col-4 mx-auto" onClick={resetButton}>New Fight</Button>
                             </Card>
-                        </Col>
                     </Row>
                 ) : (
                     /* else show active fight. */
