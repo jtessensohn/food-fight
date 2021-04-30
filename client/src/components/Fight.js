@@ -115,8 +115,10 @@ export default function Fight() {
                                         Winner
                                     </div>
                                 </Card.Title> */}
+
                                 {/* <Card.Body className="winnerCardBody" style={{textTransform:'uppercase', fontWeight:'bold', fontSize:'15px'}}>{fight.Winner.Restaurant.name}
                                 </Card.Body> */}
+
                                 {/* Map component starts here */}
                                 <Card className={`innerRestaurantCard col-10 m-5 p-5  p-3 mb-5  bg-dark mx-auto ${theme === "light" ? "innerRestaurantCard" : "innerRestaurantCardDark"}`}>
                                     <Map fightName={fight.name} />
