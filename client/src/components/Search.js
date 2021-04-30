@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Row } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import CreatableSelect from 'react-select/creatable';
 import '../css/search.css'
+import { setTeam } from '../redux/actions';
 
 export default function Search() {
     const [ isLoading, setIsLoading ] = useState(false);
+
     const [ options, setOptions ] = useState([]);
     const [ value, setValue ] = useState(null);
     const [teams, setTeams] = useState([]);
     const history = useHistory();
+    const dispatch = useDispatch()
 
     const searchTeams = () => {
         fetch('/api/v1/teams', {
@@ -46,7 +50,10 @@ export default function Search() {
               id: value.value
             })
           })
-          .then(history.push(`/team/${value.value}`))
+          .then((data) => {
+            dispatch(setTeam(value.value))
+            history.push(`/team/${value.value}`)
+          })
       }
       
       const handleCreate = async (value) => {
