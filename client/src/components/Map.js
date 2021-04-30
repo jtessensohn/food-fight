@@ -12,7 +12,7 @@ const places = ["places"]
 
 
 function Map(props) {
-  // let infowindow;
+ 
   const [center, setCenter] = useState({
     lat: -3.745,
     lng: -38.523
@@ -20,11 +20,7 @@ function Map(props) {
   const [text, setText] = useState()
   const searchBox = useRef()
   const map = useRef()
-  // const request = {
-  //   query: `${props.fightName}`,
-  //   fields: ['name', 'geometry']
-  // }
-  // infowindow = new window.google.maps.InfoWindow()
+
 
   const onMapLoad = ref => map.current = ref
   const onLoad = ref => searchBox.current = ref
@@ -37,28 +33,6 @@ function Map(props) {
     }
   }
 
-  // const service = new window.google.maps.places.PlacesService(onMapLoad)
-
-  // service.findPlaceFromQuery(request, function (results, status) {
-  //   if (status === window.google.maps.places.PlacesServiceStatus.OK) {
-  //     for (let i = 0; i < results.length; i++) {
-  //       createMarker(results[i]);
-  //     }
-  //     map.setCenter(results[0].geometry.location);
-  //   }
-  // });
-
-  // function createMarker(place) {
-  //   if (!place.geometry || !place.geometry.location) return;
-  //   const marker = new window.google.maps.Marker({
-  //     map,
-  //     position: place.geometry.location,
-  //   });
-  //   window.google.maps.event.addListener(marker, "click", () => {
-  //     infowindow.setContent(place.name || "");
-  //     infowindow.open(map);
-  //   });
-  // }
 
 
 
@@ -101,7 +75,7 @@ function Map(props) {
             }}
           />
         </StandaloneSearchBox>
-        { /* Child components, such as markers, info windows, etc. */}
+      
         <></>
       </GoogleMap>
     </LoadScript>

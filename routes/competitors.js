@@ -25,7 +25,6 @@ router.get('/', async (req, res) => {
   res.json(competitors)
 })
 
-/* I'm not sure how we're going to be selecting competitors */
 router.post('/', async (req, res) => {
   const newCompetitor = await db.Competitor.create({
     usedAt: Date(),

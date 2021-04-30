@@ -135,10 +135,5 @@ router.get('/current/winner', async (req, res) => {
     await fight.setWinner(winner)
     res.status(200).json(await winner.getRestaurant())
 })
-//need to winner column to fight table(connection to restaurant )
-// getAll competitors for a fight, pick 1.
-// vote for competitor
-// find competitor and increase vote by 1.
-
 
 module.exports = router;

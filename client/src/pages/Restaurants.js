@@ -57,8 +57,6 @@ export default function Restaurants() {
       {/* // attach handle submit to form */}
       <Form onSubmit={handleSubmit}>
         <Card className={`restaurantCard col-10 p-5 p-3 pb-5 mx-auto ${theme === "light" ? "restaurantCard" : "restaurantCardDark"}`}>
-          {/* <Card.Img url="../images/restaurant.jpg" alt="Card image" />
-          <Card.ImgOverlay> */}
           <Card className={`innerRestaurantCard col-10 p-5 mx-auto ${theme === "light" ? "innerRestaurantCard" : "innerRestaurantCardDark bg-dark text-light"}`}>
             <Form.Row>
               <Form.Group as={Col} controlId="formGridEmail" className="col-12 mx-auto">
@@ -77,15 +75,6 @@ export default function Restaurants() {
               Submit
             </Button>
           </Card>
-          {/* <Form.Row>
-              <Form.Group as={Col} controlId="formGridPassword" className="col-4 mx-auto">
-              <Form.Label className="text-white">Zip Code</Form.Label>
-              <Form.Control type="number" placeholder="Zip Code" />
-              </Form.Group>
-            </Form.Row> */}
-
-          {/* // does your button have a submit type? */}
-          {/* </Card.ImgOverlay> */}
         </Card>
       </Form>
       <Card className={`secondRestaurantCard col-10 p-5 bg-dark mx-auto ${theme === "light" ? "secondRestaurantCard" : "secondRestaurantCardDark"}`}>
