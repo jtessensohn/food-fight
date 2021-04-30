@@ -10,7 +10,6 @@ import carousel3 from '../images/carousel3.png'
 import '../css/carousel.css'
 import Search from '../components/Search';
 import BurgerBoxer from '../components/BurgerBoxer';
-// import Footer from '../components/Footer';
 
 export default function Home() {
     const user = useSelector((state) => state.user);
@@ -29,11 +28,6 @@ export default function Home() {
                                 What would be an innocent and civil discussion about where to grub-down, sides are taken instead, hurtful remarks from all sides, and worst of all, lunch is somehow almost over. <br />
                                 Skip the bickering, skip the HR complaints, and let's get this Food Fight started.
                             </Card.Text>
-                            {/* <Card.Text>
-                                Tired of Jim always choosing lunch?  <br />Does Sally always know the best foods…but not really?<br />
-                                Let’s fight about it!  Who ever said fights have to be bad? <br /> Here on Food Fight,You now have just as much say in as Jim or sally on what you get to eat for lunch<br />
-                                we make it fun to go into battle for YOUR choice in restaurants. <br /> You now have just as much say in as Jim or sally on what you get to eat for lunch
-                            </Card.Text> */}
                         </Card.Body>
                     </Card>
                 </div>
@@ -123,7 +117,6 @@ export default function Home() {
 
                 </div>
             )}
-            {/* <Footer /> */}
         </div>
     )
 }
