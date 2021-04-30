@@ -8,6 +8,12 @@
     border-bottom: 3px solid black;
 }
 
+.teamMemberCardTitleDark {
+    text-transform: uppercase !important;
+    font-size: 2.5rem;
+    border-bottom: 3px solid white;
+}
+
 .teamNameTeamPage {
     text-transform: uppercase;
     font-size: 2.5rem;

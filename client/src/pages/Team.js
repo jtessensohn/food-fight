@@ -73,8 +73,8 @@ export default function Team() {
                   <Button className="col-3 mx-auto my-auto joinButton" variant="dark" onClick={handleClick}>Join Team</Button>
                 )}
               </Row>
-              <Card className={`col-6 teamMemberCard homePageCardBody ${theme === "light" ? "homePageCardBody" : "homePageCardBodyDark"}`}>
-                <Card.Title className="teamMemberCardTitle pb-0">Team Members</Card.Title>
+              <Card className={`col-6 teamMemberCard homePageCardBody ${theme === "light" ? "homePageCardBody" : "homePageCardBodyDark bg-dark text-light"}`}>
+                <Card.Title className={`teamMemberCardTitle pb-0 ${theme === "light" ? "teamMemberCardTitle" : "teamMemberCardTitleDark"}`}>Team Members</Card.Title>
                 <Card.Body>
                   <div className="memberList">
                     {teamUsers.map(teamUser => {

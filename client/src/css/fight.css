@@ -2,7 +2,14 @@
     margin: 5% 15% 5% 15%;
     background: rgb(255, 255, 255);
     border-radius: 25px;
-    box-shadow: 0px 0px 10px 5px;
+    box-shadow: 0px 0px 10px 0px black;
+}
+
+.fightPageCardBody {
+    margin: 5% 15% 5% 15%;
+    background: rgb(255, 255, 255);
+    border-radius: 25px;
+    box-shadow: 0px 0px 10px 0px white;
 }
 
 .fightPageCard {
@@ -11,6 +18,16 @@
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
+    box-shadow: 0px 0px 10px 0px black;
+}
+
+.fightPageCardDark {
+    border-radius: 25px;
+    /* background-image: url("../images/fightPageRestCard.jpg"); */
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    box-shadow: 0px 0px 10px 0px rgb(230, 220, 36);
 }
 
 .fightPageCardTitle {
@@ -57,14 +74,18 @@
     font-weight: bolder;
     color: rgb(0, 0, 0);
     margin-top: 5%;
-    background: rgba(255, 255, 255, 0.4);
+    /* background: rgba(255, 255, 255); */
     width: fit-content;
     border-radius: 5px;
-    box-shadow: 0px 0px 10px 5px rgba(255, 255, 255, 0.4);
+    /* box-shadow: 0px 0px 10px 5px rgba(255, 255, 255, 0.4); */
 }
 
 .winnerWord {
     border-bottom: 1px solid black;
+}
+
+.winnerWordDark {
+    border-bottom: 1px solid white;
 }
 
 .fightPageButton {
