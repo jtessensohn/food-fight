@@ -3,7 +3,8 @@ import { GoogleMap, LoadScript, Marker, StandaloneSearchBox } from '@react-googl
 
 const containerStyle = {
   width: 'auto',
-  height: '50vh'
+  height: '50vh',
+  boxShadow: '0px 0px 3px 0px black'
 };
 
 const places = ["places"]

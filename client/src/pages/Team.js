@@ -66,14 +66,17 @@ export default function Team() {
       {
         !user ? (<Link to='/login'>Please Log in :)</Link>) : (
           <div>
-            <Row className="mt-3 col-12">
-              <Row className="col-6">
-                <h1 className={`col-12 p-0 my-auto teamNameTeamPage ${theme === "light" ? "text-dark" : "text-light"}`}>{teamData.name}</h1>
-                {user.TeamId !== teamData.id && (
-                  <Button className="col-3 mx-auto my-auto joinButton" variant="dark" onClick={handleClick}>Join Team</Button>
-                )}
-              </Row>
-              <Card className={`col-6 teamMemberCard homePageCardBody ${theme === "light" ? "homePageCardBody" : "homePageCardBodyDark bg-dark text-light"}`}>
+            <Row className="mt-3 col-12 mx-auto d-flex justify-content-around">
+                <Card className={`col-5 teamMemberCard homePageCardBody ${theme === "light" ? "homePageCardBody" : "homePageCardBodyDark bg-dark text-light"}`}>
+                <Card.Title className={`teamMemberCardTitle pb-0 ${theme === "light" ? "teamMemberCardTitle" : "teamMemberCardTitleDark"}`}>Team Name</Card.Title>
+                <Card.Body className="mx-auto">
+                  <div className="memberListItem p-3">
+                    {teamData.name}
+                  </div>
+                </Card.Body>
+              </Card>
+
+              <Card className={`col-5 teamMemberCard homePageCardBody ${theme === "light" ? "homePageCardBody" : "homePageCardBodyDark bg-dark text-light"}`}>
                 <Card.Title className={`teamMemberCardTitle pb-0 ${theme === "light" ? "teamMemberCardTitle" : "teamMemberCardTitleDark"}`}>Team Members</Card.Title>
                 <Card.Body>
                   <div className="memberList">
@@ -87,6 +90,21 @@ export default function Team() {
                 </Card.Body>
               </Card>
             </Row>
+
+            {user.TeamId !== teamData.id && (
+              <div>
+                <Button className="col-3 mx-auto joinButton mt-5" variant="dark" onClick={handleClick}>Join Team</Button>
+                <Card className={`mt-5 mx-auto col-5 teamMemberCard homePageCardBody ${theme === "light" ? "homePageCardBody" : "homePageCardBodyDark bg-dark text-light"}`}>
+                  <Card.Title className={`teamMemberCardTitle pb-0 ${theme === "light" ? "teamMemberCardTitle" : "teamMemberCardTitleDark"}`}>Team Fights</Card.Title>
+                  <Card.Body>
+                    <div className="memberList">
+                      To see team fights join the team
+                    </div>
+                  </Card.Body>
+                </Card>
+              </div>
+                )}
+
             {user.TeamId === teamData.id && (
               <Fight />
             )}

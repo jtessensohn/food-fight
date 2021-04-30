@@ -5,6 +5,7 @@ import NewFightForm from './NewFightForm'
 import '../css/fight.css'
 import Map from './Map'
 import { useSelector } from 'react-redux'
+import '../css/winnerAnimation.scss'
 
 export default function Fight() {
     const [teamRestaurants, setTeamRestaurants] = useState([])
@@ -96,8 +97,8 @@ export default function Fight() {
             {!fight ? (
                 <Row>
                     <Col>
-                        <Card className={`fightPageCardBody px-3 newFightCardBody homePageCardBody ${theme === "light" ? "homePageCardBody" : "homePageCardBodyDark"}`}>
-                            <Card.Title className="fightPageCardTitle">Create a new fight!</Card.Title>
+                        <h2 className={`mb-5 ${theme === "light" ? "text-dark" : "text-light"}`}>Create a new fight!</h2>
+                        <Card className={`fightPageCardBody px-3 newFightCardBody ${theme === "light" ? "fightPageCardBody" : "fightPageCardBodyDark"}`}>
                             <NewFightForm onFightCreated={getCurrentFight} />
                         </Card>
                     </Col>
@@ -107,17 +108,19 @@ export default function Fight() {
                 fight.Winner ? (
                     <Row>
                         <Col>
-                            <h2 className={`${theme === "light" ? "text-dark" : "text-light"}`}>Winner of the battle: {fight.name}</h2>
+                            <Row><h2 className={`col-12 ${theme === "light" ? "text-dark" : "text-light"}`}>Winner of <span className="fightName">{fight.name}</span> is </h2><h3 className="col-6 mx-auto"><span>{fight.Winner.Restaurant.name}</span></h3></Row>
                             <Card className={`fightPageCardBody fightPageWinnerCard ${theme === "light" ? "fightPageCard" : "fightPageCardDark"}`}>
                                 {/* <Card.Title className={`fightPageCardTitle ${theme === "light" ? "fightPageCardTitle" : "fightPageCardTitle text-light"}`}>
                                     <div className={`winnerWord ${theme === "light" ? "winnerWord" : "winnerWordDark"}`}>
                                         Winner
                                     </div>
                                 </Card.Title> */}
-                                <Card.Body className="winnerCardBody" style={{ textTransform: 'uppercase', fontWeight: 'bold', fontSize: '15px' }}>{fight.Winner.Restaurant.name}
-                                </Card.Body>
+
+                                {/* <Card.Body className="winnerCardBody" style={{textTransform:'uppercase', fontWeight:'bold', fontSize:'15px'}}>{fight.Winner.Restaurant.name}
+                                </Card.Body> */}
+
                                 {/* Map component starts here */}
-                                <Card className="innerRestaurantCard col-10 m-5 p-5  p-3 mb-5 bg-dark  mx-auto">
+                                <Card className={`innerRestaurantCard col-10 m-5 p-5  p-3 mb-5  bg-dark mx-auto ${theme === "light" ? "innerRestaurantCard" : "innerRestaurantCardDark"}`}>
                                     <Map fightName={fight.name} />
                                 </Card>
                                 <Button className="fightPageButton col-4 mx-auto" onClick={resetButton}>New Fight</Button>
@@ -129,7 +132,7 @@ export default function Fight() {
                     <>
                         <Row>
                             <Col>
-                                <h2>{fight.name}</h2>
+                                <h2 className={`mb-5 ${theme === "light" ? "text-dark" : "text-light"}`}>Fight: {fight.name}</h2>
                             </Col>
                         </Row>
                         <Row className="pb-5">
@@ -139,7 +142,7 @@ export default function Fight() {
                                         <Card.Title className="fightPageCardTitle">Restaurants</Card.Title>
                                         <Droppable droppableId="restaurants">
                                             {(provided) => (
-                                                <Card.Body className={`fightPageCardBody ${theme === "light" ? "fightPageCardBody" : "fightPageCardBodyDark bg-dark text-light"}`} {...provided.droppableProps} ref={provided.innerRef}> Drag and Drop restaurants into the fight box to select them.
+                                                <Card.Body className={`homePageCard m-5 ${theme === "light" ? "homePageCard bg-light text-dark" : "homePageCardDark bg-dark text-light"}`} {...provided.droppableProps} ref={provided.innerRef}> Drag and Drop restaurants into the fight box to select them.
                                                     <br />
                                                     <br />
                                                     {teamRestaurants.map((restaurant, index) => {
@@ -164,7 +167,7 @@ export default function Fight() {
                                         <Card.Title className="fightPageCardTitle">Fighters Arena</Card.Title>
                                         <Droppable droppableId="fight">
                                             {(provided) => (
-                                                <Card.Body className={`fightPageCardBody ${theme === "light" ? "fightPageCard" : "bg-dark text-light"}`} {...provided.droppableProps} ref={provided.innerRef}>
+                                                <Card.Body className={`homePageCard m-5 ${theme === "light" ? "homePageCard bg-light text-dark" : "homePageCardDark bg-dark text-light"}`} {...provided.droppableProps} ref={provided.innerRef}>
                                                     {fightRestaurants.map((restaurant, index) => {
                                                         return (
                                                             <Draggable key={restaurant.id} draggableId={restaurant.id.toString()} index={index}>
