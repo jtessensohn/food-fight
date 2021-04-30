@@ -110,13 +110,13 @@ export default function Fight() {
                 fight.Winner ? (
                     <Row>
                             <Row className="mx-auto"><h2 className={`col-12 mx-auto ${theme === "light" ? "text-dark" : "text-light"}`}>Winner of <span className="fightName">{fight.name}</span> is </h2><h3 className="col-6 mx-auto"><span>{fight.Winner.Restaurant.name}</span></h3></Row>
-                            <Card className={`col-12 mx-auto fightPageCardBody fightPageWinnerCard ${theme === "light" ? "fightPageCard" : "fightPageCardDark"}`}>
+                            <div className={`col-12 mx-auto fightPageCardBody fightPageWinnerCard ${theme === "light" ? "fightPageCard" : "fightPageCardDark"}`}>
 
                                 <Card className={`innerRestaurantCard col-10 m-5 p-5  p-3 mb-5  bg-dark mx-auto ${theme === "light" ? "innerRestaurantCard" : "innerRestaurantCardDark"}`}>
                                     <Map fightName={fight.name} />
                                 </Card>
                                 <Button className="fightPageButton col-4 mx-auto" onClick={resetButton}>New Fight</Button>
-                            </Card>
+                            </div>
                     </Row>
                 ) : (
                     /* else show active fight. */
