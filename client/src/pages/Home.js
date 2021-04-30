@@ -9,6 +9,7 @@ import carousel2 from '../images/carousel2.png'
 import carousel3 from '../images/carousel3.png'
 import '../css/carousel.css'
 import Search from '../components/Search';
+import BurgerBoxer from '../components/BurgerBoxer';
 // import Footer from '../components/Footer';
 
 export default function Home() {
@@ -17,6 +18,7 @@ export default function Home() {
 
     return (
         <div>
+            
             <Row className={`firstRow homePageCardBody ${theme === "light" ? "homePageCardBody" : "homePageCardBodyDark"}`}>
                 <div className="col-6 my-auto mx-auto">
                     <Card className={`homePageCard ${theme === "light" ? "bg-light text-dark" : "bg-dark text-light"}`}>

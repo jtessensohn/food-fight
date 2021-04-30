@@ -33,7 +33,7 @@ export default function NewFightForm(props) {
     return (
         <div>
 
-            <form className="form-login" onSubmit={createFight}>
+            <form className="form-login mt-5" onSubmit={createFight}>
                 <div className="form-label-group m-0">
                     <input onChange={handleChange} type="text" id="inputname" className="form-control" placeholder="name" value={fightName.name} name="name" required autoFocus />
                     <label className="mx-auto" htmlFor="inputname">Fight name</label>

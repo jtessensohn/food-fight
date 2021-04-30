@@ -7,6 +7,7 @@ import { setUser, toggleTheme } from '../redux/actions';
 import '../css/navigation.css'
 import DarkModeToggle from 'react-dark-mode-toggle';
 import nameLogo from "../images/nameLogo.png"
+import BurgerBoxer from './BurgerBoxer';
 
 export default function Navigation() {
     const user = useSelector((state) => state.user);
@@ -48,6 +49,10 @@ export default function Navigation() {
         <div className="header navbarContainer">
             <Navbar bg="dark" variant="dark" className="d-flex justify-content-between">
                 <Navbar.Brand as={Link} to="/" className="nameLogoLink"><img src={nameLogo} alt="Logo"></img></Navbar.Brand>
+                <div style={{marginRight: "auto"}}>
+                <BurgerBoxer gloveColor="red" />
+                <BurgerBoxer gloveColor="blue" opposite={true} />
+                </div>
                 {/* <Button onClick={handleThemeSwitch}>Theme Switch</Button> */}
                 <DarkModeToggle onChange={(setIsDarkMode, handleThemeSwitch)} checked={isDarkMode} size={80}/>
                 <Nav>
