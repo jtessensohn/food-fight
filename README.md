@@ -50,31 +50,21 @@
   <summary>Table of Contents</summary>
   <ol>
     <li>
-      <a href="#about-the-project">About The Project</a>
+      <a href="#preview-of-the-project">About The Project</a>
       <ul>
         <li><a href="#built-with">Built With</a></li>
       </ul>
     </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
+    <li><a href="#future-features">Future Features</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgements">Acknowledgements</a></li>
   </ol>
 </details>
 
 
 
 <!-- ABOUT THE PROJECT -->
-## About The Project
+## Preview of the project
 
 [![Food Fight Screen Shot][product-screenshot]](https://example.com)
 
@@ -113,30 +103,92 @@ This section will list the major frameworks that we used to build our project.
 <br>
 <img alt='EXPRESS' src='https://camo.githubusercontent.com/87d8d88ac087f77c5b56509373a2dd49e5439722d7ad59c3f39a577907053152/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f657870726573732e6a732532302d2532333430346435392e7376673f267374796c653d666f722d7468652d6261646765'>
 
+<br>
+<br>
+<br>
 
 <!-- USAGE EXAMPLES -->
-## Usage
+# Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+Food-Fight is a website to help companies or groups of people decide where to eat instead of wasting time agruing with people trying to decide where to go. How it works? Easy, you sign in and create a team add what restaurants you want to pick from, drag and drop them into the fight box and just click the fight button and it picks a restaurant for you! You can also use our map function to find the closest one to you, which also gives you an address with just a click of the restaurant !
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+## Want to have your own Food-Fight? Click [here](https://example.com)
 
-
-
+<br>
 <!-- ROADMAP -->
-## Roadmap
 
-See the [open issues](https://github.com/jtessensohn/food-fight/issues) for a list of proposed features (and known issues).
+# Future features
+ 
+ ## Here's a list of idea's we have for the future of our website.
+ 
+* Have it to where user's can vote between two restaurants.
+* Have the map automatically search for the winner.
+* Add where it gets all the details for the winning restaurant and displays them under the winner.
 
+<br>
 
 <!-- CONTACT -->
-## Contact
+# Contact
 
 Project Link: [https://github.com/jtessensohn/food-fight](https://github.com/jtessensohn/food-fight)
 
+<br>
 
 
-<!-- ACKNOWLEDGEMENTS -->
+# API's
+
+Places API  (React-Google-Maps.)
+
+<br>
+
+# How it works.
+``` jsx
+try {
+            // try to send update to backend
+            if (result.destination.droppableId === "fight") {
+                // if it is dragged to the fight column, add competitor to fight
+                await fetch(`/api/v1/fights/${fight.id}/competitors/`, {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        id: result.draggableId
+                    })
+                }).then(res => res.json())
+                    .then(data => {
+                        if (data.error) throw data.error
+                    })
+            } else if (result.destination.droppableId === "restaurants") {
+                // if it is dragged to the restaurants column, remove competitor from fight
+                await fetch(`/api/v1/fights/${fight.id}/competitors/${result.draggableId}`, {
+                    method: "DELETE"
+                }).then(res => res.json())
+                    .then(data => {
+                        if (data.error) throw data.error
+                    })
+            }
+        } catch (error) {
+            alert(error)
+            getCurrentFight()
+            return;
+        }
+    }
+    const initiateFight = (e) => {
+        fetch('/api/v1/fights/current/winner')
+            .then(res => res.json())
+            .then(data => {
+                getCurrentFight()
+            })
+    }
+    useEffect(() => {
+        getCurrentFight()
+    }, [])
+```
+
+
+
+<!-- ACKNOWLEDGEMENTS
 ## Acknowledgements
 * [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
 * [Img Shields](https://shields.io)
@@ -149,7 +201,7 @@ Project Link: [https://github.com/jtessensohn/food-fight](https://github.com/jte
 * [Sticky Kit](http://leafo.net/sticky-kit)
 * [JVectorMap](http://jvectormap.com)
 * [Font Awesome](https://fontawesome.com)
-
+ -->
 
 
 

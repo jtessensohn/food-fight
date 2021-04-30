@@ -38,7 +38,7 @@ export default function Team() {
       })
     }).then(() => {
       dispatch(setTeam(+id))
-      allUsers()
+      allUsers(id)
     })
   }
 
