@@ -12,7 +12,6 @@ export default function Register() {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        // console.log("submitted")
         fetch('api/v1/users/register', {
             method: 'POST',
             headers: {
@@ -28,7 +27,6 @@ export default function Register() {
                 if (data.error) {
                     alert(data.error)
                 } else {
-                    alert('User Registered successfully')
                     history.push('/login')
                 }
             })
@@ -49,7 +47,6 @@ export default function Register() {
                         <div className="col-lg-10 col-xl-9 mx-auto">
                             <div className="card card-login flex-row my-5">
                                 <div className="card-img-left d-none d-md-flex ">
-                                    {/* background image set in css */}
                                 </div>
                                 <div className="card-body">
                                     <h5 className="card-title text-center">Register</h5>
@@ -67,13 +64,6 @@ export default function Register() {
                                             <input onChange={handleChange} type="password" id="inputPassword" className="form-control" placeholder="Password" value={form.password} name="password" required />
                                             <label htmlFor="inputPassword">Password</label>
                                         </div>
-
-
-                                        {/* add later to check to see if the passwords match */}
-                                        {/* <div className="form-label-group">
-                                        <input type="password" id="inputConfirmPassword" className="form-control" placeholder="Password" required />
-                                        <label for="inputConfirmPassword">Confirm password</label>
-                                    </div> */}
 
                                         <button className="btn btn-lg button btn-block mb-3 text-uppercase" type="submit">Register</button>
                                     </form>

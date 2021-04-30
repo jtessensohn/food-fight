@@ -21,7 +21,6 @@ export default function Navigation() {
             .then(res => res.json())
             .then(data => {
                 if (data.success) {
-                    alert(data.success) 
                     dispatch(setUser(null))
                     history.push('/')
                 }
@@ -53,7 +52,6 @@ export default function Navigation() {
                 <BurgerBoxer gloveColor="red" />
                 <BurgerBoxer gloveColor="blue" opposite={true} />
                 </div>
-                {/* <Button onClick={handleThemeSwitch}>Theme Switch</Button> */}
                 <DarkModeToggle onChange={(setIsDarkMode, handleThemeSwitch)} checked={isDarkMode} size={80}/>
                 <Nav>
                 {user ? (
