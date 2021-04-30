@@ -9,7 +9,6 @@ import carousel2 from '../images/carousel2.png'
 import carousel3 from '../images/carousel3.png'
 import '../css/carousel.css'
 import Search from '../components/Search';
-import BurgerBoxer from '../components/BurgerBoxer';
 
 export default function Home() {
     const user = useSelector((state) => state.user);
@@ -31,7 +30,6 @@ export default function Home() {
                         </Card.Body>
                     </Card>
                 </div>
-
 
                 <div className="col-6 m-auto">
                     <img className="logo py-0" src={logov2} alt='Food-fight-logo.png'></img>

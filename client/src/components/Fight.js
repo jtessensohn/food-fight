@@ -35,9 +35,11 @@ export default function Fight() {
                     })
             })
     }
+
     const resetButton = (e) => {
         setFight(null)
     }
+    
     async function handleOnDragEnd(result) {
         if (!result.destination) return;
         const state = {

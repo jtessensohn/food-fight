@@ -30,7 +30,6 @@ export default function Login() {
                 if (data.error) {
                     alert(data.error)
                 } else {
-                    alert('User Logged In Successfully')
                     dispatch(setUser(data))
                     history.push('/');
                 }
