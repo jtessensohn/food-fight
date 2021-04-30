@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from './pages/Home';
 import Register from './pages/Register';
 import Login from './pages/Login';
-import Myteam from './pages/Myteam';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { setUser } from './redux/actions';
@@ -50,9 +49,6 @@ function App() {
               </Route>
               <Route path="/team/:id">
                 <Team />
-              </Route>
-              <Route path="/myteam">
-                <Myteam />
               </Route>
               <Route path='/restaurants'>
                 <Restaurants />
