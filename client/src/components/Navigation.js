@@ -52,6 +52,7 @@ export default function Navigation() {
                 <BurgerBoxer gloveColor="red" />
                 <BurgerBoxer gloveColor="blue" opposite={true} />
                 </div>
+
                 <DarkModeToggle onChange={(setIsDarkMode, handleThemeSwitch)} checked={isDarkMode} size={80}/>
                 <Nav>
                 {user ? (
