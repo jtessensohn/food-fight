@@ -66,7 +66,8 @@
 <!-- ABOUT THE PROJECT -->
 ## Preview of the project
 
-[![Food Fight Screen Shot][product-screenshot]](https://example.com)
+![Food-Fight](./client/src/images/Food-Fight.mp4)
+<!-- [![Food Fight Screen Shot][product-screenshot]](https://example.com) -->
 
 How often have you been with your peers, family, or friends and the conversation of where you are going to eat gets brought up?
 I would say at least once, and I would bet that at least half of the time no one can decide on where to eat. Food fight takes the stress out of deciding where to to eat. Each person can have their input and have a chance of their choice of food getting chosen. This way, even though everyone may not be happy about it, it is at least fair.
