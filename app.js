@@ -14,7 +14,7 @@ const competitorsRouter = require('./routes/competitors');
 const teamsRouter = require('./routes/teams');
 const fightsRouter = require('./routes/fights');
 
-()
+
 const app = express();
 
 const store = new SequelizeStore({ db: db.sequelize })
